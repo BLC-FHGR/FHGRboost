@@ -1,0 +1,308 @@
+// Post SCSS for the theme.
+// Styles
+// /*    GENERAL */
+// /*    FONTS */
+// /*    GUI ELEMENTS */
+
+//   /**    NAVIGATION TOP */
+//   /**    NAVIGATION LEFT */
+//   /**    TOOLBOX */
+//   /**    BREADCRUMBs */
+//   /**    EDITOR ATTO */
+
+//   /**    CARDS */
+//   /**    BUTTONS */
+
+//   /**    FOOTER */
+
+//* ***************** */
+//** START Styles  **//
+//* ***************** */
+
+// /*    GENERAL */
+// Overwritten body attributes */
+
+body {
+  background-color: $white;
+  color: $textgrey;
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+}
+
+// /*    FONTS */
+// Changes to typeface appearence
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $wedgewood;
+}
+
+.page-header-headings h1 {
+  font-weight: 100;
+}
+
+.sectionname a {
+  background: $sand;
+  // background: rgba(white, 0.25);
+  color: $wedgewood;
+  font-family: 'Roboto', sans-serif;
+}
+
+// /*    GUI ELEMENTS */
+//   /**    NAVIGATION TOP */
+
+.navbar-light {
+  background-color: $wedgewood;
+  border-bottom: 0 solid;
+
+  .navbar-nav .nav-link {
+    color: $white;
+	}
+
+  .navbar-brand {
+    background-color: $wedgewood;
+  }
+
+  a {
+    color: $white;
+  }
+}
+
+.dropdown-menu {
+  .icon {
+    color: $wedgewood;
+  }
+}
+
+header {
+  .navbar {
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar-brand {
+    padding: 0;
+  }
+}
+
+.avatar {
+  img {
+    height: 16px;
+    width: 16px;
+  }
+}
+
+//   /**    NAVIGATION LEFT */
+#nav-drawer {
+  background-color: $white;
+  box-shadow: $material-shadow1;
+  font-size: 1.2em;
+  font-weight: 100;
+}
+
+a.list-group-item {
+
+  i {
+    color: $wedgewood;
+  }
+
+  .list-group-item-action {
+    padding-left: 20px;
+  }
+
+  .font-weight-bold {
+    border-left: 10px solid $driftwood;
+    padding-left: 10px;
+	}
+
+  &:first-child,
+	&:last-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+	}
+}
+
+.list-group-item {
+  background-color: $white;
+  border: 0;
+
+  .media {
+    font-size: .8em;
+  }
+}
+
+#nav-drawer::-webkit-scrollbar {
+  display: none;
+}
+
+//   /**    TOOLBOX */
+
+// TODO fix full width navigation!
+.toolbar {
+  // -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+  background: $white;
+  box-shadow: $material-shadow1;
+  position: fixed;
+  top: 45px;
+  z-index: 2;
+
+  .btn {
+    color: $white;
+  }
+
+  a {
+    color: $white;
+  }
+}
+.region_main_settings_menu{
+  z-index: 1;
+  background: $wedgewood;
+}
+//   /**    BREADCRUMBs */
+
+.breadcrumb {
+  background-color: none;
+  font-weight: 100;
+
+  a {
+    background: $white;
+    border: 0 solid;
+    border-radius: 3px;
+    color: $wedgewood-dark;
+    font-weight: 600;
+    padding: 4px 10px;
+	}
+
+  .breadcrumb-item {
+    color: $wedgewood;
+	}
+
+  &:last-of-type {
+    // font-weight: 900;
+  }
+}
+
+.current-breadcrumb {
+  // background-color: $white;
+  font-weight: 100;
+
+  a {
+    background-color: $white;
+    border: 0 solid;
+    border-radius: 3px;
+    color: $wedgewood-dark;
+    padding: 4px 10px;
+	}
+
+  .breadcrumb-item {
+    color: $wedgewood;
+	}
+
+  &:last-of-type {
+    // font-weight: 900;
+  }
+}
+
+
+//   /**    EDITOR ATTO */
+
+.editor_atto_toolbar i {
+  color: $wedgewood;
+}
+
+//   /**    CARDS AND BLOCKS */
+.card {
+  background: adjust-color($sand, $blue: 5);
+  border: 0;
+
+  .courses-view-course-item {
+    box-shadow: $material-shadow1;
+
+    &:hover {
+      box-shadow: $material-shadow1-hover;
+    }
+  }
+}
+
+.block {
+  background-color: $white;
+}
+
+.courses {
+
+  .coursebox {
+    box-shadow: $material-shadow1;
+    margin: 20px 0;
+    padding: 20px 10px;
+
+    &:hover {
+      background-color: $sand;
+      box-shadow: $material-shadow1-hover;
+      cursor: pointer;
+		}
+	}
+}
+
+//* activities to cards */
+.section li.activity {
+  margin: 4px 10px 4px 0;
+  padding: 2.2em;
+}
+//* later version */
+
+// .activity{
+//   column-count: 4;
+//   background-color: $white;
+//   box-shadow: $material-shadow1;
+//   display: inline-table;
+// }
+
+//   /**    BUTTONS*/
+button {
+  border: 0;
+  border-radius: 2px;
+  color: $white;
+  cursor: pointer;
+  display: inline-block;
+  height: 36px;
+  letter-spacing: .5px;
+  line-height: 36px;
+  padding: 0 2rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .2s ease-out;
+}
+
+.btn-secondary {
+  background-color: $wedgewood;
+  border-color: $wedgewood;
+  // box-shadow: $button-shadow;
+  box-shadow: none;
+  color: $white;
+
+  i {
+    color: $white;
+	}
+}
+
+.btn-default:active,
+.btn-default:focus,
+.btn-default:hover,
+.btn-default:visited,
+.btn-secondary:hover {
+  background-color: $wedgewood-dark;
+  border-color: $wedgewood-dark;
+  box-shadow: $button-shadow-hover;
+  color: $white;
+}
+//   /**    FOOTER */
+
+#pagefooter a {
+  color: $white;
+  font-weight: 900;
+}
