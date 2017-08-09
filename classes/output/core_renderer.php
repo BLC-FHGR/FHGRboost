@@ -147,17 +147,18 @@ class core_renderer extends \core_renderer {
           $context->show_toolbar = true;
         }
 
-        //TODO: entferne unbenötigte Attribute für mustache mit if abfrage: headermenu alle attribute abfragen und nimmst nur die attribute die du haben willst
         $context->header_menu = $this->context_header_settings_menu();
         $context->region_menu = $this->region_main_settings_menu_structure();
 
-
-        if (!(empty($context->header_menu) && empty($context->region_menu))) {
+        if (!(empty($context->header_menu) && empty($context->region_menu)) &&
+            !(empty($context->header_menu->secondary) && empty($context->regionmenu->secondary))) {
+            // hide the toolbar if nothing is visible.
             $context->show_toolbar = true;
         }
 
-
-        // NOTE: We sh
+        // TODO: We should have only one source for the menus.
+        // TODO: Clarify the data structure of the semantic toolbar/menu
+        // TODO: Encapsulate the following structure
         $actionMenu = new stdClass();
 
         $items = $this->page->navbar->get_items();
@@ -169,11 +170,12 @@ class core_renderer extends \core_renderer {
                 // Build an action menu based on the visible nodes from this navigation tree.
                 $this->build_sem_action_menu($actionMenu, $node);
                 $context->sem_action_menu = $actionMenu;
-
-                // $this->build_sem_action_menu($actionMenu, $node);
+                if (!empty($actionMenu->items)) {
+                    $context->show_toolbar = true;
+                }
             }
         }
-        // $context->course_menu = $this->page->button;
+
         return $this->render_from_template('core/toolbar', $context);
     }
 
