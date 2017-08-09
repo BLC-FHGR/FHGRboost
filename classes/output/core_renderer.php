@@ -150,8 +150,8 @@ class core_renderer extends \core_renderer {
         $context->header_menu = $this->context_header_settings_menu();
         $context->region_menu = $this->region_main_settings_menu_structure();
 
-        if (!(empty($context->header_menu) && empty($context->region_menu)) &&
-            !(empty($context->header_menu->secondary) && empty($context->regionmenu->secondary))) {
+        if (!(empty($context->header_menu) && empty($context->region_menu))) {
+            // !(empty($context->header_menu->secondary) && empty($context->regionmenu->secondary))) {
             // hide the toolbar if nothing is visible.
             $context->show_toolbar = true;
         }
