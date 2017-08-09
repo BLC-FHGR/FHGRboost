@@ -59,8 +59,9 @@
 
 <!-- $html .= html_writer::div($pageheadingbutton, 'breadcrumb-button pull-xs-right'); -->
 <!-- <div class="row"> -->
-<div class="row toolbar">
+
 {{#show_toolbar}}
+<div class="row toolbar">
 <!-- <div class="card-block "> -->
 
   <nav id="anothernav" class="col-xs-12 p-a-1">
@@ -82,6 +83,21 @@
       </div>
     <!-- </div> -->
     {{/secondary}}{{/header_menu}}
+    {{#region_menu}}
+    {{^sem_action_menu}}{{#secondary}}
+      <!-- <div class="row"> -->
+<!-- <div class="context_header_settings_menu pull-xs-left ...> -->
+      <div class="context_header_settings_menu {{classes}}"{{#attributes}} {{name}}="{{value}}"{{/attributes}}>
+        {{#items}}{{#actionlink}}
+
+        <div class="btn btn-secondary">
+          <a href="{{url}}"{{#attributes}} {{name}}="{{value}}"{{/attributes}}>{{text}}</a>
+        </div>
+        {{/actionlink}}{{/items}}
+      </div>
+    <!-- </div> -->
+    {{/secondary}}{{/sem_action_menu}}
+    {{/region_menu}}
     {{!
       spezielle Menu Struktur, die struktur infomrationen enthält, so dass
       wir bestimmte unterpunkte ausblenden oder separat behandeln können.
@@ -117,8 +133,7 @@
        {{/sem_action_menu}}
   </nav>
 
-
+</div>
 <!-- </div> -->
 {{/show_toolbar}}
 <!-- </div> -->
-</div>

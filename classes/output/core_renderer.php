@@ -149,12 +149,15 @@ class core_renderer extends \core_renderer {
 
         //TODO: entferne unbenötigte Attribute für mustache mit if abfrage: headermenu alle attribute abfragen und nimmst nur die attribute die du haben willst
         $context->header_menu = $this->context_header_settings_menu();
-        if (!empty($context->header_menu)) {
+        $context->region_menu = $this->region_main_settings_menu_structure();
+
+
+        if (!(empty($context->header_menu) && empty($context->region_menu))) {
             $context->show_toolbar = true;
         }
 
 
-        $menu = new action_menu();
+        // NOTE: We sh
         $actionMenu = new stdClass();
 
         $items = $this->page->navbar->get_items();
@@ -165,21 +168,11 @@ class core_renderer extends \core_renderer {
             if ($node) {
                 // Build an action menu based on the visible nodes from this navigation tree.
                 $this->build_sem_action_menu($actionMenu, $node);
-                $this->build_action_menu_from_navigation($menu, $node);
+                $context->sem_action_menu = $actionMenu;
+
                 // $this->build_sem_action_menu($actionMenu, $node);
             }
         }
-
-        $ctxMenu = $menu->export_for_template($this);
-
-        if ($ctxMenu) {
-            $context->action_menu = $ctxMenu;
-            //$context->action_json = json_encode($ctxMenu);
-            $context->show_toolbar = true;
-            $context->sem_action_menu = $actionMenu;
-            $context->json_action_menu = json_encode($actionMenu);
-        }
-
         // $context->course_menu = $this->page->button;
         return $this->render_from_template('core/toolbar', $context);
     }
@@ -189,7 +182,7 @@ class core_renderer extends \core_renderer {
     // recursively build the menu tree.
     private function build_sem_action_menu($menu, navigation_node $node) {
         $skipAttr = ["parent", "classes", "children", "type", "action"];
-        if (!$menu->items) {
+        if (!property_exists($menu, "items")) {
             $menu->items = [];
         }
         foreach ($node->children as $menuitem) {
@@ -621,14 +614,18 @@ class core_renderer extends \core_renderer {
      */
     public function context_header_settings_menu() {
         $context = $this->page->context;
-        $menu = new action_menu();
 
         $items = $this->page->navbar->get_items();
         $currentnode = end($items);
 
+        $topleafs = false;
+        $showMoreButton = true;
+
         $showcoursemenu = false;
         $showfrontpagemenu = false;
         $showusermenu = false;
+
+        $settingsnode;
 
         // We are on the course home page.
         if (($context->contextlevel == CONTEXT_COURSE) &&
@@ -672,60 +669,52 @@ class core_renderer extends \core_renderer {
             $showusermenu = true;
         }
 
-
         if ($showfrontpagemenu) {
             $settingsnode = $this->page->settingsnav->find('frontpage', navigation_node::TYPE_SETTING);
             if ($settingsnode) {
                 // Build an action menu based on the visible nodes from this navigation tree.
-                $skipped = $this->build_action_menu_from_navigation($menu, $settingsnode, false, true);
-
-                // We only add a list to the full settings menu if we didn't include every node in the short menu.
-                if ($skipped) {
-                    $text = get_string('morenavigationlinks');
-                    $url = new moodle_url('/course/admin.php', array('courseid' => $this->page->course->id));
-                    $link = new action_link($url, $text, null, null, new pix_icon('t/edit', $text));
-                    $menu->add_secondary_action($link);
-                }
+                $topleafs = true;
             }
         } else if ($showcoursemenu) {
             $settingsnode = $this->page->settingsnav->find('courseadmin', navigation_node::TYPE_COURSE);
             if ($settingsnode) {
-                // Build an action menu based on the visible nodes from this navigation tree.
-                $skipped = $this->build_action_menu_from_navigation($menu, $settingsnode, false, true);
-
-                // We only add a list to the full settings menu if we didn't include every node in the short menu.
-                if ($skipped) {
-                    $text = get_string('morenavigationlinks');
-                    $url = new moodle_url('/course/admin.php', array('courseid' => $this->page->course->id));
-                    $link = new action_link($url, $text, null, null, new pix_icon('t/edit', $text));
-                    $menu->add_secondary_action($link);
-                }
+                $topleafs = true;
             }
         } else if ($showusermenu) {
             // Get the course admin node from the settings navigation.
             $settingsnode = $this->page->settingsnav->find('useraccount', navigation_node::TYPE_CONTAINER);
             if ($settingsnode) {
                 // Build an action menu based on the visible nodes from this navigation tree.
-                $this->build_action_menu_from_navigation($menu, $settingsnode);
+                $showMoreButton = false;
             }
         }
 
-        return $menu->export_for_template($this);
-        // error_log(json_encode($menu->export_for_template($this)));
-        //
-        // return $this->render($menu);
+        if (isset($settingsnode)){
+            return $this->prepare_menu_for_template($settingsnode, $topleafs, $showMoreButton);
+        }
+        return null;
     }
 
-    /**
-     * This is an optional menu that can be added to a layout by a theme. It contains the
-     * menu for the most specific thing from the settings block. E.g. Module administration.
-     *
-     * @return string
-     */
-    public function region_main_settings_menu() {
-        $context = $this->page->context;
+    private function prepare_menu_for_template($node,
+                                               $onlytopleafnodes = false,
+                                               $showMoreButton = false) {
         $menu = new action_menu();
+        if ($node) {
+            $skipped = $this->build_action_menu_from_navigation($menu, $node, false, $onlytopleafnodes);
 
+            if ($showMoreButton && $skipped) {
+                $text = get_string('morenavigationlinks');
+                $url = new moodle_url('/course/admin.php', array('courseid' => $this->page->course->id));
+                $link = new action_link($url, $text, null, null, new pix_icon('t/edit', $text));
+                $menu->add_secondary_action($link);
+            }
+        }
+        return $menu->export_for_template($this);
+    }
+
+    private function prepare_region_settings_menu() {
+        $context = $this->page->context;
+        $node;
         if ($context->contextlevel == CONTEXT_MODULE) {
 
             $this->page->navigation->initialise();
@@ -748,20 +737,12 @@ class core_renderer extends \core_renderer {
             if ($buildmenu) {
                 // Get the course admin node from the settings navigation.
                 $node = $this->page->settingsnav->find('modulesettings', navigation_node::TYPE_SETTING);
-                if ($node) {
-                    // Build an action menu based on the visible nodes from this navigation tree.
-                    $this->build_action_menu_from_navigation($menu, $node);
-                }
             }
 
         } else if ($context->contextlevel == CONTEXT_COURSECAT) {
             // For course category context, show category settings menu, if we're on the course category page.
             if ($this->page->pagetype === 'course-index-category') {
                 $node = $this->page->settingsnav->find('categorysettings', navigation_node::TYPE_CONTAINER);
-                if ($node) {
-                    // Build an action menu based on the visible nodes from this navigation tree.
-                    $this->build_action_menu_from_navigation($menu, $node);
-                }
             }
 
         } else {
@@ -770,13 +751,34 @@ class core_renderer extends \core_renderer {
 
             if ($navbarnode && ($navbarnode->key === 'participants')) {
                 $node = $this->page->settingsnav->find('users', navigation_node::TYPE_CONTAINER);
-                if ($node) {
-                    // Build an action menu based on the visible nodes from this navigation tree.
-                    $this->build_action_menu_from_navigation($menu, $node);
-                }
-
             }
         }
+        if (isset($node)) {
+            return $node;
+        }
+        return null;
+    }
+
+    public function region_main_settings_menu_structure() {
+         $node = $this->prepare_region_settings_menu();
+         return $this->prepare_menu_for_template($node);
+    }
+
+    /**
+     * This is an optional menu that can be added to a layout by a theme. It contains the
+     * menu for the most specific thing from the settings block. E.g. Module administration.
+     *
+     * @return string
+     */
+    public function region_main_settings_menu() {
+        $menu = new action_menu();
+        $node = $this->prepare_region_settings_menu();
+
+        if ($node) {
+            // Build an action menu based on the visible nodes from this navigation tree.
+            $this->build_action_menu_from_navigation($menu, $node);
+        }
+
         return $this->render($menu);
     }
 
