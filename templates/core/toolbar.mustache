@@ -82,7 +82,39 @@
       </div>
     <!-- </div> -->
     {{/secondary}}{{/header_menu}}
+    {{!
+      spezielle Menu Struktur, die struktur infomrationen enthält, so dass
+      wir bestimmte unterpunkte ausblenden oder separat behandeln können.
+      die sem_action_menu struktur enthält ein Array "items".
+      ein Item hat die folgenden struktur
 
+      {
+        "link" : "http://mdl-dev.htwchur.ch/enrol/users.php?id=58",
+        "display" : true,
+        "text" : "Eingeschriebene Nutzer/innen",
+        "key" : "review",
+        "icon" : {
+           "pix" : "i/enrolusers",
+           "attributes" : {
+              "class" : "navicon",
+              "alt" : ""
+           },
+           "component" : "moodle"
+        },
+        "users" : true    // <- das ist die übergeordnete menu kategorie
+     }
+    }}
+       {{#sem_action_menu}}
+            <div class="context_header_settings_menu">
+                {{#items}}
+                {{^manageinstances}} {{! Einschreibemethoden ausblenden}}
+                <div class="btn btn-secondary">
+                  <a href="{{link}}">{{text}}</a>
+                </div>
+                {{/manageinstances}}
+                {{/items}}
+            </div>
+       {{/sem_action_menu}}
   </nav>
 
 

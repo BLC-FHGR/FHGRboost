@@ -74,17 +74,16 @@ class core_renderer extends \core_renderer {
         global $PAGE;
 
         $html = "";
-
-
         $html .= $this->toolbar();
-        $html .= $this->toolbarParticipants();
-        $html .= html_writer::start_div('row region_main_settings_menu');
-        $html .= $this->region_main_settings_menu();
-        $html .= html_writer::end_div();
+        // $html .= $this->toolbarParticipants(); // This is the handler where the participants toolbar should be
+        // $html .= html_writer::start_div('row region_main_settings_menu');
+        // $html .= $this->region_main_settings_menu(); // this is the handler where the participants toolbar is actually generated.
+        // $html .= html_writer::end_div();
         // $html = html_writer::start_tag('nav', array('id' => 'anothernav', 'class' => 'navbar toolbar'));
         //   $pageheadingbutton = $this->page_heading_button();
         // $html .= html_writer::end_tag('nav');
 
+        // FIXME LATER: Move the entire header into mustache templates
         $html .= html_writer::start_tag('header', array('id' => 'page-header', 'class' => 'row'));
         $html .= html_writer::start_div('col-xs-12 p-a-1');
         $html .= html_writer::start_div('card bloedecard');
@@ -144,14 +143,90 @@ class core_renderer extends \core_renderer {
         $context = new \stdClass;
         $context->show_toolbar = false;
         $context->edit_button = $this->page->button;
-        // if (!empty($context->edit_button)) {
+        if (!empty($context->edit_button)) {
           $context->show_toolbar = true;
-        // }
+        }
 
         //TODO: entferne unbenötigte Attribute für mustache mit if abfrage: headermenu alle attribute abfragen und nimmst nur die attribute die du haben willst
         $context->header_menu = $this->context_header_settings_menu();
+        if (!empty($context->header_menu)) {
+            $context->show_toolbar = true;
+        }
+
+
+        $menu = new action_menu();
+        $actionMenu = new stdClass();
+
+        $items = $this->page->navbar->get_items();
+        $navbarnode = end($items);
+
+        if ($navbarnode && ($navbarnode->key === 'participants')) {
+            $node = $this->page->settingsnav->find('users', navigation_node::TYPE_CONTAINER);
+            if ($node) {
+                // Build an action menu based on the visible nodes from this navigation tree.
+                $this->build_sem_action_menu($actionMenu, $node);
+                $this->build_action_menu_from_navigation($menu, $node);
+                // $this->build_sem_action_menu($actionMenu, $node);
+            }
+        }
+
+        $ctxMenu = $menu->export_for_template($this);
+
+        if ($ctxMenu) {
+            $context->action_menu = $ctxMenu;
+            //$context->action_json = json_encode($ctxMenu);
+            $context->show_toolbar = true;
+            $context->sem_action_menu = $actionMenu;
+            $context->json_action_menu = json_encode($actionMenu);
+        }
+
         // $context->course_menu = $this->page->button;
         return $this->render_from_template('core/toolbar', $context);
+    }
+
+    // builds a menu structure with semantic information about the menu structures
+    // a future version should place sub menus into a sub-structure so we can
+    // recursively build the menu tree.
+    private function build_sem_action_menu($menu, navigation_node $node) {
+        $skipAttr = ["parent", "classes", "children", "type", "action"];
+        if (!$menu->items) {
+            $menu->items = [];
+        }
+        foreach ($node->children as $menuitem) {
+            if ($menuitem->display) {
+                $item = $this->clone_object($menuitem, $skipAttr);
+
+                if ($menuitem->action instanceof action_link) {
+                    $link = $menuitem->action;
+                } else {
+                    $link = new action_link($menuitem->action, $menuitem->text, null, null, $menuitem->icon);
+                }
+
+                $item->link = $link->url->out(true);
+                $item->{$menuitem->parent->key} = true;
+
+                $menu->items[] = $item;
+                if (!empty($menuitem->children)) {
+                    $this->build_sem_action_menu($menu, $menuitem);
+                }
+            }
+        }
+    }
+
+    /*
+     * helper function to deep copy data structures and moodle classes
+     */
+    private function clone_object($object, $excl) {
+        $item = new stdClass();
+        foreach (get_object_vars($object) as $property => $value) {
+            if (!in_array($property, $excl) && !empty($value)) {
+                if (is_object($value)) {
+                    $value = $this->clone_object($value, $excl);
+                }
+                $item->{$property} = $value;
+            }
+        }
+        return $item;
     }
 
     /*
@@ -440,6 +515,9 @@ class core_renderer extends \core_renderer {
      * @return string HTML
      */
     public function render_action_menu(action_menu $menu) {
+        // TODO überprüfen, ob alle action menus auch korrekt im toolbar
+        // TODO abgebildet sind.
+        // return ''; // action menu vollständig ausblenden
 
         // We don't want the class icon there!
         foreach ($menu->get_secondary_actions() as $action) {
