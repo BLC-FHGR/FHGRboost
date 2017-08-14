@@ -173,8 +173,7 @@ class core_renderer extends \core_renderer {
             $node = $this->page->settingsnav->find('users', navigation_node::TYPE_CONTAINER);
             if ($node) {
                 // Build an action menu based on the visible nodes from this navigation tree.
-                $this->build_sem_action_menu($actionMenu, $node);
-                $context->sem_action_menu = $actionMenu;
+                $context->sem_action_menu =  $this->build_sem_action_menu($actionMenu, $node);
                 if (!empty($actionMenu->items)) {
                     $context->show_toolbar = true;
                 }
@@ -204,6 +203,8 @@ class core_renderer extends \core_renderer {
 
                 $item->link = $link->url->out(true);
                 $item->{$menuitem->parent->key} = true;
+                $item->{$menuitem->key} = true;
+                $item->itemkey = $menuitem->key;
 
                 $menu->items[] = $item;
                 if (!empty($menuitem->children)) {
@@ -211,6 +212,7 @@ class core_renderer extends \core_renderer {
                 }
             }
         }
+        return $menu;
     }
 
     /*
@@ -696,7 +698,7 @@ class core_renderer extends \core_renderer {
             }
         }
 
-        if (isset($settingsnode)){
+        if (isset($settingsnode)) {
             return $this->prepare_menu_for_template($settingsnode, $topleafs, $showMoreButton);
         }
         return null;
@@ -819,7 +821,7 @@ class core_renderer extends \core_renderer {
                             $link->icon = $menuitem->icon;
                         }
                     } else {
-                        $link = new action_link($menuitem->action, $menuitem->text, null, null, $menuitem->icon);
+                        $link = new action_link($menuitem->action, $menuitem->text, null], $menuitem->icon);
                     }
                 } else {
                     if ($onlytopleafnodes) {
