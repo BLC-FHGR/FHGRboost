@@ -147,17 +147,23 @@ class core_renderer extends \core_renderer {
           $context->show_toolbar = true;
         }
 
+        //TODO: entferne unbenötigte Attribute für mustache mit if abfrage: headermenu alle attribute abfragen und nimmst nur die attribute die du haben willst
         $context->header_menu = $this->context_header_settings_menu();
         $context->region_menu = $this->region_main_settings_menu_structure();
 
-        // if (!(empty($context->header_menu) && empty($context->region_menu))) {
+
         if (!(empty($context->header_menu) ||
               empty($context->header_menu->secondary->items)) ||
             !(empty($context->region_menu) ||
-              empty($context->region_menu->secondaryactions))) {
-
-            // !(empty($context->header_menu->secondaryactions) && empty($context->regionmenu->secondaryactions))) {
+              empty($context->region_menu->secondary->items))) {
             // hide the toolbar if nothing is visible.
+
+	if (!(empty($context->region_menu) || empty($context->region_menu->secondary->items))) {
+		$context->json_rm = json_encode($context->region_menu);
+	}
+	if (!(empty($context->header_menu) || empty($context->header_menu->secondary->items))) {
+		$context->json_hm = json_encode($context->header_menu);
+	}
             $context->show_toolbar = true;
         }
 
@@ -204,7 +210,7 @@ class core_renderer extends \core_renderer {
                 $item->link = $link->url->out(true);
                 $item->{$menuitem->parent->key} = true;
                 $item->{$menuitem->key} = true;
-                $item->itemkey = $menuitem->key;
+     	        $item->key = $menuitem->key;
 
                 $menu->items[] = $item;
                 if (!empty($menuitem->children)) {
@@ -770,6 +776,7 @@ class core_renderer extends \core_renderer {
 
     public function region_main_settings_menu_structure() {
          $node = $this->prepare_region_settings_menu();
+//         return $this->build_sem_action_menu(new stdClass(), $node);
          return $this->prepare_menu_for_template($node);
     }
 
@@ -821,7 +828,7 @@ class core_renderer extends \core_renderer {
                             $link->icon = $menuitem->icon;
                         }
                     } else {
-                        $link = new action_link($menuitem->action, $menuitem->text, null], $menuitem->icon);
+                        $link = new action_link($menuitem->action, $menuitem->text, null, null, $menuitem->icon);
                     }
                 } else {
                     if ($onlytopleafnodes) {
