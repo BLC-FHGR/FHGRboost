@@ -140,50 +140,28 @@ class core_renderer extends \core_renderer {
      * Uses bootstrap compatible html.
      */
     public function toolbar() {
-        $context = new \stdClass;
+        $context = new stdClass;
         $context->show_toolbar = false;
         $context->edit_button = $this->page->button;
         if (!empty($context->edit_button)) {
           $context->show_toolbar = true;
         }
 
-        //TODO: entferne unbenötigte Attribute für mustache mit if abfrage: headermenu alle attribute abfragen und nimmst nur die attribute die du haben willst
-        $context->header_menu = $this->context_header_settings_menu();
-        $context->region_menu = $this->region_main_settings_menu_structure();
+        $context->sem_header_menu = $this->context_header_settings_menu();
 
+        if (empty($context->sem_header_menu) ||
+            empty($context->sem_header_menu->items)) {
 
-        if (!(empty($context->header_menu) ||
-              empty($context->header_menu->secondary->items)) ||
-            !(empty($context->region_menu) ||
-              empty($context->region_menu->secondary->items))) {
-            // hide the toolbar if nothing is visible.
+            $context->sem_header_menu = $this->region_main_settings_menu_structure();
+            $context->json_hm = json_encode($context->sem_header_menu);
 
-	if (!(empty($context->region_menu) || empty($context->region_menu->secondary->items))) {
-		$context->json_rm = json_encode($context->region_menu);
-	}
-	if (!(empty($context->header_menu) || empty($context->header_menu->secondary->items))) {
-		$context->json_hm = json_encode($context->header_menu);
-	}
-            $context->show_toolbar = true;
-        }
-
-        // TODO: We should have only one source for the menus.
-        // TODO: Clarify the data structure of the semantic toolbar/menu
-        // TODO: Encapsulate the following structure
-        $actionMenu = new stdClass();
-
-        $items = $this->page->navbar->get_items();
-        $navbarnode = end($items);
-
-        if ($navbarnode && ($navbarnode->key === 'participants')) {
-            $node = $this->page->settingsnav->find('users', navigation_node::TYPE_CONTAINER);
-            if ($node) {
-                // Build an action menu based on the visible nodes from this navigation tree.
-                $context->sem_action_menu =  $this->build_sem_action_menu($actionMenu, $node);
-                if (!empty($actionMenu->items)) {
-                    $context->show_toolbar = true;
-                }
+            if (!(empty($context->sem_header_menu) ||
+                  empty($context->sem_header_menu->items))) {
+                 $context->show_toolbar = true;
             }
+        }
+        else {
+            $context->show_toolbar = true;
         }
 
         return $this->render_from_template('core/toolbar', $context);
@@ -198,7 +176,7 @@ class core_renderer extends \core_renderer {
             $menu->items = [];
         }
         foreach ($node->children as $menuitem) {
-            if ($menuitem->display) {
+            if ($menuitem->display && $menuitem->action) {
                 $item = $this->clone_object($menuitem, $skipAttr);
 
                 if ($menuitem->action instanceof action_link) {
@@ -208,9 +186,10 @@ class core_renderer extends \core_renderer {
                 }
 
                 $item->link = $link->url->out(true);
-                $item->{$menuitem->parent->key} = true;
+                $item->{"pk".$menuitem->parent->key} = true;
                 $item->{$menuitem->key} = true;
      	        $item->key = $menuitem->key;
+                $item->parent_key = $menuitem->parent->key;
 
                 $menu->items[] = $item;
                 if (!empty($menuitem->children)) {
@@ -713,18 +692,43 @@ class core_renderer extends \core_renderer {
     private function prepare_menu_for_template($node,
                                                $onlytopleafnodes = false,
                                                $showMoreButton = false) {
-        $menu = new action_menu();
-        if ($node) {
-            $skipped = $this->build_action_menu_from_navigation($menu, $node, false, $onlytopleafnodes);
 
-            if ($showMoreButton && $skipped) {
+        if ($node) {
+            $result = $this->build_sem_action_menu(new stdClass, $node);
+            if ($result && $showMoreButton) {
                 $text = get_string('morenavigationlinks');
                 $url = new moodle_url('/course/admin.php', array('courseid' => $this->page->course->id));
                 $link = new action_link($url, $text, null, null, new pix_icon('t/edit', $text));
-                $menu->add_secondary_action($link);
+                $key = "more_functions";
+                $item = new stdClass;
+
+                $item->key = $key;
+                $item->{key} = true;
+                $item->{"pk".$node->key} = true;
+                $item->parent_key = $node->key;
+
+                $item->link = $link->url->out(true);
+                $item->text = $text;
+
+                $result->items[] = $item;
             }
         }
-        return $menu->export_for_template($this);
+
+        return $result;
+        //
+        //
+        // $menu = new action_menu();
+        // if ($node) {
+        //     $skipped = $this->build_action_menu_from_navigation($menu, $node, false, $onlytopleafnodes);
+        //
+        //     if ($showMoreButton && $skipped) {
+        //         $text = get_string('morenavigationlinks');
+        //         $url = new moodle_url('/course/admin.php', array('courseid' => $this->page->course->id));
+        //         $link = new action_link($url, $text, null, null, new pix_icon('t/edit', $text));
+        //         $menu->add_secondary_action($link);
+        //     }
+        // }
+        // return $menu->export_for_template($this);
     }
 
     private function prepare_region_settings_menu() {
@@ -776,7 +780,9 @@ class core_renderer extends \core_renderer {
 
     public function region_main_settings_menu_structure() {
          $node = $this->prepare_region_settings_menu();
-//         return $this->build_sem_action_menu(new stdClass(), $node);
+         if ($node) {
+             return $this->build_sem_action_menu(new stdClass(), $node);
+         }
          return $this->prepare_menu_for_template($node);
     }
 
