@@ -155,13 +155,15 @@ class core_renderer extends \core_renderer {
             $context->sem_header_menu = $this->region_main_settings_menu_structure();
             $context->json_hm = json_encode($context->sem_header_menu);
 
-            if (!(empty($context->sem_header_menu) ||
-                  empty($context->sem_header_menu->items))) {
-                 $context->show_toolbar = true;
-            }
+
         }
-        else {
-            $context->show_toolbar = true;
+
+        if (!(empty($context->sem_header_menu) ||
+              empty($context->sem_header_menu->items))) {
+             $context->toolbar_menu = $context->sem_header_menu;
+             $context->debug = new stdClass;
+             $context->debug->toolbar_menu = json_encode($context->sem_header_menu);
+             $context->show_toolbar = true;
         }
 
         return $this->render_from_template('core/toolbar', $context);
