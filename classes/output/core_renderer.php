@@ -706,7 +706,7 @@ class core_renderer extends \core_renderer {
                 $item = new stdClass;
 
                 $item->key = $key;
-                $item->{key} = true;
+                $item->{$key} = true;
                 $item->{"pk".$node->key} = true;
                 $item->parent_key = $node->key;
 
