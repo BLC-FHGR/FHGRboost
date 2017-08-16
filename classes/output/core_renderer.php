@@ -695,6 +695,7 @@ class core_renderer extends \core_renderer {
                                                $onlytopleafnodes = false,
                                                $showMoreButton = false) {
 
+        $result = false;
         if ($node) {
             $result = $this->build_sem_action_menu(new stdClass, $node);
             if ($result && $showMoreButton) {
