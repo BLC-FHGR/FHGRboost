@@ -1,5 +1,4 @@
-define(['jquery', 'd3'], function($, d3) {
-
+define(['exports', 'jquery', 'theme_htwboost/d3'], function(exports, $, d3) {
 /* global d3*/
 
 // FIXME: Moodle prefers AMD Syntax over the Global Scope.
@@ -651,8 +650,7 @@ function checkFeedbackAnalysis() {
         // toggleBarChart();
     }
 }
-console.log("läuft");
-$(document).ready(checkFeedbackAnalysis);
-
-
-})
+// console.log("läuft");
+// $(document).ready(checkFeedbackAnalysis);
+exports.checkFeedbackAnalysis = checkFeedbackAnalysis;
+});
