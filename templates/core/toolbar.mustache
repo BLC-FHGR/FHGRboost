@@ -33,7 +33,7 @@
 <div class="nav toolbar hidden-sm-down">
 <!-- <div class="card-block "> -->
 
-  <nav id="anothernav" class="col-xs-12 p-a-1">
+  <nav id="anothernav" class="col-xs-12 p-a-1  {{#edit_state}}editing{{/edit_state}}">
     {{!
       spezielle Menu Struktur, die struktur infomrationen enthält, so dass
       wir bestimmte unterpunkte ausblenden oder separat behandeln können.
@@ -72,7 +72,7 @@
                 {{^restore}}
                 {{^pkquestionbank}}
                 <div class="btn btn-secondary {{key}}" data-pk="{{parent_key}}">
-                  <a href="{{{link}}}">{{text}}</a>
+                    <a href="{{{link}}}">{{text}}</a>
                 </div>
                 {{/pkquestionbank}}
                 {{/restore}}
@@ -92,6 +92,11 @@
   </nav>
 
 </div>
+{{#debug}}
+<div class="hidden">
+    {{toolbar_menu}}
+</div>
+{{/debug}}
 <!-- </div> -->
 {{/show_toolbar}}
 <!-- </div> -->

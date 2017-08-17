@@ -147,6 +147,8 @@ class core_renderer extends \core_renderer {
           $context->show_toolbar = true;
         }
 
+        $context->edit_state = $this->page->user_is_editing();
+
         $context->sem_header_menu = $this->context_header_settings_menu();
 
         if (empty($context->sem_header_menu) ||
@@ -188,7 +190,7 @@ class core_renderer extends \core_renderer {
                 }
 
                 $item->link = $link->url->out(true);
-                $item->{"pk".$menuitem->parent->key} = true;
+                $item->{"pk" . $menuitem->parent->key} = true;
                 $item->{$menuitem->key} = true;
      	        $item->key = $menuitem->key;
                 $item->parent_key = $menuitem->parent->key;
