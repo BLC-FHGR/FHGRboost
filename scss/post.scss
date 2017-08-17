@@ -3,22 +3,17 @@
 // /*    GENERAL */
 // /*    FONTS */
 // /*    GUI ELEMENTS */
-
 //   /**    NAVIGATION TOP */
 //   /**    NAVIGATION LEFT */
 //   /**    TOOLBOX */
 //   /**    BREADCRUMBs */
 //   /**    EDITOR ATTO */
-
 //   /**    CARDS */
 //   /**    BUTTONS */
-
 //   /**    FOOTER */
-
 //* ***************** */
 //** START Styles  **//
 //* ***************** */
-
 // /*    GENERAL */
 // Overwritten body attributes */
 
@@ -28,7 +23,6 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: normal;
 }
-
 // /*    FONTS */
 // Changes to typeface appearence
 
@@ -41,6 +35,17 @@ h6 {
   color: $wedgewood;
 }
 
+a {
+  color: $driftwood;
+}
+// #page{
+//   margin-top: 0;
+// }
+//
+// #page.container-fluid {
+//   margin-top: 6rem;
+// }
+
 .page-header-headings h1 {
   font-weight: 100;
 }
@@ -51,7 +56,6 @@ h6 {
   color: $wedgewood;
   font-family: 'Roboto', sans-serif;
 }
-
 // /*    GUI ELEMENTS */
 //   /**    NAVIGATION TOP */
 
@@ -61,7 +65,7 @@ h6 {
 
   .navbar-nav .nav-link {
     color: $white;
-	}
+  }
 
   .navbar-brand {
     background-color: $wedgewood;
@@ -69,16 +73,33 @@ h6 {
 
   a {
     color: $white;
+
+    .dropdown-item {
+      color: $wedgewood;
+    }
   }
 }
 
 .dropdown-menu {
+  color: $wedgewood;
+
   .icon {
     color: $wedgewood;
   }
 }
 
+.dropdown-menu .dropdown-item {
+  color: $wedgewood;
+}
+
+.course-content .current::before {
+    content: "";
+    border-left: $brandred 4px solid;
+    position: absolute;
+  }
 header {
+  padding: 0 !important;
+
   .navbar {
     margin: 0;
     padding: 0;
@@ -96,16 +117,26 @@ header {
   }
 }
 
+.navbar a {
+  margin-top: 4px;
+}
+
+.navbar .menubar {
+  margin-top: 6px;
+}
+
+.site-name {
+  margin-top: 2px;
+}
 //   /**    NAVIGATION LEFT */
 #nav-drawer {
   background-color: $white;
   box-shadow: $material-shadow1;
   font-size: 1.2em;
-  font-weight: 100;
+  font-weight: 300;
 }
 
 a.list-group-item {
-
   i {
     color: $wedgewood;
   }
@@ -117,13 +148,13 @@ a.list-group-item {
   .font-weight-bold {
     border-left: 10px solid $driftwood;
     padding-left: 10px;
-	}
+  }
 
   &:first-child,
-	&:last-child {
+  &:last-child {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-	}
+  }
 }
 
 .list-group-item {
@@ -131,34 +162,95 @@ a.list-group-item {
   border: 0;
 
   .media {
-    font-size: .8em;
+    font-size: 0.8em;
   }
 }
 
 #nav-drawer::-webkit-scrollbar {
   display: none;
 }
+// navigation drawer left //
 
+[data-region="drawer"] {
+  top: 36px;
+  height: calc(100% - 36px);
+}
+
+#nav-drawer .list-group {
+  border-bottom: 1px solid #ddd;
+}
+//* TODO REPLACE ALL COLORS FROM DEFAULT.SCSS IN BOOST THEME WITH HTW BRAND COLORS//
+.navbar-light .navbar-nav .nav-link:hover{
+  // color:$wedgewood-dark;
+  font-weight: 900;
+}
+.tag-info, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity200 .info.release, .assignfeedback_editpdf_widget .label{
+  background-color: $wedgewood-dark;
+}
 //   /**    TOOLBOX */
-
 // TODO fix full width navigation!
 .toolbar {
   // -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
   background: $white;
   box-shadow: $material-shadow1;
   position: fixed;
-  top: 45px;
+  top: 32px;
   z-index: 2;
+  max-width: 87%;
 
   .btn {
     color: $white;
+    font-size: 13px;
+    padding: 0.2em 0.6em;
+    margin: 0 !important;
+    height: 24px;
   }
 
   a {
     color: $white;
   }
+
+  button {
+    font-size: 11px;
+    padding: 0.2em 0.6em;
+    margin: 0 !important;
+    height: 24px;
+  }
+  //
+  // nav#anothernav {
+  //   min-width: 100%;
+  // }
+  // button#single_button598ad5bce646c1 {
+  //     font-size: 11px;
+  //     padding: 1.2em 0.6em;
+  //     margin: 0!important;
+  //     height: 24px;
+  // }
+  // nav#anothernav {
+  //   padding: 10px 6px 6px 8px !important;
+  // }
 }
-.region_main_settings_menu{
+#anothernav.p-a-1{
+  padding: .8rem 1rem .6rem 1rem !important;
+}
+.btn.btn-secondary.turneditingonoff{
+  background-color: $brandred!important;
+}
+
+
+.context_header_settings_menu {
+display: flex;
+flex-direction: row;
+  .turneditingonoff{
+    order: 1;
+  }
+  .btn {
+    padding: .35em .6em;
+    margin: .25rem!important;
+  }
+}
+
+.region_main_settings_menu {
   z-index: 1;
   background: $wedgewood;
 }
@@ -175,11 +267,11 @@ a.list-group-item {
     color: $wedgewood-dark;
     font-weight: 600;
     padding: 4px 10px;
-	}
+  }
 
   .breadcrumb-item {
     color: $wedgewood;
-	}
+  }
 
   &:last-of-type {
     // font-weight: 900;
@@ -196,24 +288,20 @@ a.list-group-item {
     border-radius: 3px;
     color: $wedgewood-dark;
     padding: 4px 10px;
-	}
+  }
 
   .breadcrumb-item {
     color: $wedgewood;
-	}
+  }
 
   &:last-of-type {
     // font-weight: 900;
   }
 }
-
-
 //   /**    EDITOR ATTO */
-
 .editor_atto_toolbar i {
   color: $wedgewood;
 }
-
 //   /**    CARDS AND BLOCKS */
 .card {
   background: adjust-color($sand, $blue: 5);
@@ -233,7 +321,6 @@ a.list-group-item {
 }
 
 .courses {
-
   .coursebox {
     box-shadow: $material-shadow1;
     margin: 20px 0;
@@ -243,24 +330,32 @@ a.list-group-item {
       background-color: $sand;
       box-shadow: $material-shadow1-hover;
       cursor: pointer;
-		}
-	}
+    }
+  }
+}
+//* activities to cards */
+.section {
+  li.activity {
+    margin: 4px 10px 4px 0;
+    padding: 2.2em;
+  }
 }
 
-//* activities to cards */
-.section li.activity {
-  margin: 4px 10px 4px 0;
-  padding: 2.2em;
+.activity {
+  background-color: $white !important;
+
+  img.activityicon {
+    -webkit-filter: grayscale(70%);
+    filter: grayscale(70%);
+  }
 }
 //* later version */
-
 // .activity{
 //   column-count: 4;
 //   background-color: $white;
 //   box-shadow: $material-shadow1;
 //   display: inline-table;
 // }
-
 //   /**    BUTTONS*/
 button {
   border: 0;
@@ -287,9 +382,28 @@ button {
 
   i {
     color: $white;
-	}
+  }
 }
 
+.btn-default,
+.btn-secondary {
+  background-color: $wedgewood;
+  border-color: $wedgewood;
+  // box-shadow: $button-shadow;
+  color: $white;
+  border: 0;
+}
+
+.tab-pane {
+  .btn-default{
+    background: $wedgewood;
+  }
+  .btn-default.active {
+    background-color: $wedgewood-dark;
+    border: 0;
+    color: $white;
+  }
+}
 .btn-default:active,
 .btn-default:focus,
 .btn-default:hover,
@@ -305,4 +419,41 @@ button {
 #pagefooter a {
   color: $white;
   font-weight: 900;
+}
+/* FIX THIS SHIT SOON */
+#page-grade-grading-manage .actions .btn-group > .action.active,
+#page-grade-grading-manage .actions .btn-group > .action:active,
+#page-grade-grading-manage .actions .btn-group > .action:focus,
+#page-grade-grading-manage .actions .btn-group-vertical > .action.active,
+#page-grade-grading-manage .actions .btn-group-vertical > .action:active,
+#page-grade-grading-manage .actions .btn-group-vertical > .action:focus,
+#rubric-rubric.gradingform_rubric #rubric-criteria .criterion .addlevel .btn-group > input.active,
+#rubric-rubric.gradingform_rubric #rubric-criteria .criterion .addlevel .btn-group > input:active,
+#rubric-rubric.gradingform_rubric #rubric-criteria .criterion .addlevel .btn-group > input:focus,
+#rubric-rubric.gradingform_rubric #rubric-criteria .criterion .addlevel .btn-group-vertical > input.active,
+#rubric-rubric.gradingform_rubric #rubric-criteria .criterion .addlevel .btn-group-vertical > input:active,
+#rubric-rubric.gradingform_rubric #rubric-criteria .criterion .addlevel .btn-group-vertical > input:focus,
+#rubric-rubric.gradingform_rubric .btn-group > .addcriterion.active,
+#rubric-rubric.gradingform_rubric .btn-group > .addcriterion:active,
+#rubric-rubric.gradingform_rubric .btn-group > .addcriterion:focus,
+#rubric-rubric.gradingform_rubric .btn-group-vertical > .addcriterion.active,
+#rubric-rubric.gradingform_rubric .btn-group-vertical > .addcriterion:active,
+#rubric-rubric.gradingform_rubric .btn-group-vertical > .addcriterion:focus,
+.btn-group > .btn.active,
+.btn-group > .btn:active,
+.btn-group > .btn:focus,
+.btn-group-vertical > .btn.active,
+.btn-group-vertical > .btn:active,
+.btn-group-vertical > .btn:focus {
+  z-index: 0;
+}
+
+.courses .coursebox{
+  background-color: $white;
+}
+.page-item.active .page-link, .page-item.active .page-link:focus, .page-item.active .page-link:hover{
+  z-index: 0;
+}
+button.close, .moodle-dialogue-base button.closebutton{
+  margin-top: -6px;
 }
