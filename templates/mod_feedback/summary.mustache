@@ -40,9 +40,13 @@
 
 }}
 
+<p>
+hello
+</p>
 {{#js}}
+console.log("hi");
 require(['theme_htwboost/feedback'], function(fb) {
-    feedback.checkFeedbackAnalysis();
+    fb.checkFeedbackAnalysis();
 });
 {{/js}}
 
