@@ -607,8 +607,9 @@ function extendUI() {
     // The chart area is hidden by default
     $(".feedback_info:first-child").before("<div id=\"feedback_analysis\" class=\"hidden\">");
 
-    // Insert the functional buttons. These buttons are always visible.
-    $("#feedback_analysis").before("<div id=\"feedback_vizbuttons\" class=\"fbbuttons\">");
+    // Insert the functional buttons. These buttons are always visible
+
+    $(".form-buttons").prepend("<div id=\"feedback_vizbuttons\" class=\"singlebutton\">");
     $("#feedback_vizbuttons")
         .append("<span id=\"fbanalysis_barchart\" class=\"btn btn-outline-primary\">Bar Chart</span>")
         .append("<span id=\"fbanalysis_bubblechart\" class=\"btn btn-outline-primary\">Bubble Chart</span>")
