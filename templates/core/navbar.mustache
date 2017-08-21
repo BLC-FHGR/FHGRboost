@@ -15,6 +15,9 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
+    This template generates the breadcrumb
+}}
+{{!
     @template core/navbar
 
     Navbar template.
@@ -58,6 +61,8 @@
         ]
     }
 }}
+{{^page.page_layout_options.nonavbar}}
+{{#page.navbar}}
 <div class="clearfix w-100 pull-xs-left" id="page-navbar">
 <div class="breadcrumb-nav">
 <nav role="navigation">
@@ -74,3 +79,4 @@
 </nav>
 </div>
 </div>
+{{/page.navbar}}{{/page.page_layout_options.nonavbar}}

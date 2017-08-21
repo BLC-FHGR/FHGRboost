@@ -41,7 +41,7 @@ defined('MOODLE_INTERNAL') || die;
  * Renderers to align Moodle's HTML with that expected by Bootstrap
  *
  * @package    theme_htwboost
- * @copyright  2012 Bas Brands, www.basbrands.nl
+ * @copyright  2017, Blended Learning Center HTW Chur
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -49,7 +49,90 @@ class core_renderer extends \core_renderer {
 
     /** @var custom_menu_item language The language menu if created */
     protected $language = null;
+    protected $page_context = null;
 
+    /**
+     * Extend the render context with extra information about the page we render.
+     * This exposes contextual information of the environment in which the
+     * template is called.
+     * Currently only the page context is included
+     */
+    public function render_from_template($templatename, $context) {
+        if ($context && is_object($context) && !property_exists($context, "page")) {
+
+            $context->page = $this->get_page_context();
+        }
+        return parent::render_from_template($templatename, $context);
+    }
+
+    /**
+     * returns the page context so it can be used in templates.
+     *
+     * The page context is exposed under the page context.
+     */
+    private function get_page_context() {
+        if (!is_null($this->page_context)) {
+            return $this->page_context;
+        }
+
+        if (!$this->page) {
+            return false;
+        }
+
+        $context = new stdClass;
+
+        $context->settings_menu_forced = $this->page->is_settings_menu_forced();
+        $context->user_is_editing = $this->page->user_is_editing();
+        $context->has_navbar = $this->page->has_navbar();
+        $context->user_can_edit_blocks = $this->page->user_can_edit_blocks();
+        $context->user_can_edit = $this->page->user_allowed_editing();
+        $context->popup_notifications_allowed = $this->page->get_popup_notification_allowed();
+
+
+        $context->activity_name = $this->page->activityname;
+        $context->bodyid = $this->page->bodyid;
+        $context->categories = $this->page->categories;
+        $context->context = $this->page->context;
+        $context->course = $this->page->course;
+        $context->focused_element = $this->page->focuscontrol;
+        $context->heading = $this->page->heading;
+        $context->is_cachable = $this->page->cacheable;
+        $context->module = $this->page->cm;
+        $context->navbar = $this->page->navbar;
+        $context->page_layout = $this->page->pagelayout;
+        $context->page_type = $this->page->pagetype;
+        $context->periodic_refresh = $this->page->periodicrefreshdelay;
+        $context->request_ip = $this->page->requestip;
+        $context->request_origin = $this->page->requestorigin;
+        $context->subpage = $this->page->subpage;
+        $context->title = $this->page->title;
+        $context->url = $this->page->url;
+
+        // not implemented
+        // - settingsnav
+        // - flatnav
+        // - navigation
+        // - opencontainers
+        // - devicetypeinuse
+        // - blockmanipulations
+        // - theme
+        // - button
+        // - requires
+        // - blocks
+        // - docspath
+        // - headingmenu
+        // - bodyclasses
+
+        // deliberately not implemented
+        // $context->activity = $this->page->activtyrecord; // MAY NOT EXIST
+        // $context->alternative_versions = $this->page->alternativeversions; // MAY NOT EXIST
+        // $context->page_layout_options = $this->page->pagelayout_options; // MAY NOT EXIST
+
+        // - state
+        // - headerprinted
+
+        return $this->page_context = $context;
+    }
     /**
      * Outputs the opening section of a box.
      *
@@ -71,17 +154,11 @@ class core_renderer extends \core_renderer {
      * @return string HTML to display the main header.
      */
     public function full_header() {
-        global $PAGE;
+        // global $PAGE;
 
         $html = "";
+        //$html .= $this->navbar();
         $html .= $this->toolbar();
-        // $html .= $this->toolbarParticipants(); // This is the handler where the participants toolbar should be
-        // $html .= html_writer::start_div('row region_main_settings_menu');
-        // $html .= $this->region_main_settings_menu(); // this is the handler where the participants toolbar is actually generated.
-        // $html .= html_writer::end_div();
-        // $html = html_writer::start_tag('nav', array('id' => 'anothernav', 'class' => 'navbar toolbar'));
-        //   $pageheadingbutton = $this->page_heading_button();
-        // $html .= html_writer::end_tag('nav');
 
         // FIXME LATER: Move the entire header into mustache templates
         $html .= html_writer::start_tag('header', array('id' => 'page-header', 'class' => 'row'));
@@ -94,12 +171,12 @@ class core_renderer extends \core_renderer {
         $html .= $this->context_header();
         $html .= html_writer::end_div();
         // $pageheadingbutton = $this->page_heading_button();
-        if (empty($PAGE->layout_options['nonavbar'])) {
-            $html .= $this->navbar();
+
+         $html .= $this->navbar();
             // $html .= html_writer::div($pageheadingbutton, 'breadcrumb-button pull-xs-right');
         // } else if ($pageheadingbutton) {
         //     $html .= html_writer::div($pageheadingbutton, 'breadcrumb-button nonavbar pull-xs-right');
-        }
+        // }
         $html .= html_writer::tag('div', $this->course_header(), array('id' => 'course-header'));
         $html .= html_writer::end_div();
         $html .= html_writer::end_div();
@@ -133,7 +210,8 @@ class core_renderer extends \core_renderer {
      * Uses bootstrap compatible html.
      */
     public function navbar() {
-        return $this->render_from_template('core/navbar', $this->page->navbar);
+        return $this->render_from_template('core/navbar', new stdClass);
+
     }
     /*
      * This renders the toolbar.
@@ -141,6 +219,7 @@ class core_renderer extends \core_renderer {
      */
     public function toolbar() {
         $context = new stdClass;
+
         $context->show_toolbar = false;
         $context->edit_button = $this->page->button;
         if (!empty($context->edit_button)) {
@@ -224,20 +303,21 @@ class core_renderer extends \core_renderer {
      * This renders the toolbar for participants.
      * Uses bootstrap compatible html.
      */
-    public function toolbarParticipants() {
-        $context = new \stdClass;
-        $context->show_toolbar = false;
-        $context->edit_button = $this->page->button;
-        // if (!empty($context->edit_button)) {
-          $context->show_toolbar = true;
-        // }
-
-        //TODO: entferne unbenötigte Attribute für mustache mit if abfrage: headermenu alle attribute abfragen und nimmst nur die attribute die du haben willst
-        //$context->header_menu = $this->context_header_settings_menu();
-        $context->header_menu = $this->region_main_settings_menu();
-        // $context->course_menu = $this->page->button;
-        return $this->render_from_template('core/toolbarParticipants', $context);
-    }
+    // public function toolbarParticipants() {
+    //     $context = new \stdClass;
+    //
+    //     $context->show_toolbar = false;
+    //     $context->edit_button = $this->page->button;
+    //     // if (!empty($context->edit_button)) {
+    //       $context->show_toolbar = true;
+    //     // }
+    //
+    //     //TODO: entferne unbenötigte Attribute für mustache mit if abfrage: headermenu alle attribute abfragen und nimmst nur die attribute die du haben willst
+    //     //$context->header_menu = $this->context_header_settings_menu();
+    //     $context->header_menu = $this->region_main_settings_menu();
+    //     // $context->course_menu = $this->page->button;
+    //     return $this->render_from_template('core/toolbarParticipants', $context);
+    // }
 
     /**
      * We don't like these...
