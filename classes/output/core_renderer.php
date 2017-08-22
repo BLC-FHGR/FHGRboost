@@ -83,11 +83,14 @@ class core_renderer extends \core_renderer {
 
         $context->settings_menu_forced = $this->page->is_settings_menu_forced();
         $context->user_is_editing = $this->page->user_is_editing();
-        $context->has_navbar = $this->page->has_navbar();
         $context->user_can_edit_blocks = $this->page->user_can_edit_blocks();
         $context->user_can_edit = $this->page->user_allowed_editing();
         $context->popup_notifications_allowed = $this->page->get_popup_notification_allowed();
 
+        // For some reason this crashes on admin pages
+        // if ($this->page && ($this->page->navigation || $this->page->settingsnav)) {
+        //     $context->has_navbar = $this->page->has_navbar();
+        // }
 
         $context->activity_name = $this->page->activityname;
         $context->bodyid = $this->page->bodyid;
