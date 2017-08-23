@@ -90,12 +90,12 @@
         "sitename": "Beer & Chips"
     }
 }}
-
 <div class="m-y-3 hidden-sm-down"></div>
 <div class="row">
 <div class="col-xl-6 push-xl-3 m-2-md col-sm-8 push-sm-2">
 <div class="card">
     <div class="card-block">
+
         <div class="card-title text-xs-center">
             {{#logourl}}
                 <h2><img src="{{logourl}}" title="{{sitename}}" alt="{{sitename}}"/></h2>
@@ -106,117 +106,187 @@
             <hr>
         </div>
 
-        {{#cansignup}}
-            <div class="sr-only">
-                <a href="{{signupurl}}">{{#str}} tocreatenewaccount {{/str}}</a>
-            </div>
-        {{/cansignup}}
-
-        {{#error}}
-            <div class="loginerrors m-t-1">
-                <a href="#" id="loginerrormessage" class="accesshide">{{error}}</a>
-                <div class="alert alert-danger" role="alert">{{error}}</div>
-            </div>
-        {{/error}}
-
         <div class="row">
-            <div class="col-md-4 push-md-1">
-                <form class="m-t-1" action="{{loginurl}}" method="post" id="login">
-                    <input id="anchor" type="hidden" name="anchor" value="">
-                    <script>document.getElementById('anchor').value = location.hash;</script>
+          <section id="region-main" class="col-lg-4 col-offset-3">
+                    <!-- display the login info -->
+                    <div class="container">
+                    <div class="span12 <?php if (isloggedin() and !isguestuser()) echo ' hidden';?>">
 
-                    <label for="username" class="sr-only">
-                        {{^canloginbyemail}}
-                            {{#str}} username {{/str}}
-                        {{/canloginbyemail}}
-                        {{#canloginbyemail}}
-                            {{#str}} usernameemail {{/str}}
-                        {{/canloginbyemail}}
-                    </label>
-                    <input type="text" name="username" id="username"
-                        class="form-control"
-                        value="{{username}}"
-                        placeholder={{#quote}}{{^canloginbyemail}}{{#str}}username{{/str}}{{/canloginbyemail}}{{#canloginbyemail}}{{#str}}usernameemail{{/str}}{{/canloginbyemail}}{{/quote}}>
-                    <label for="password" class="sr-only">{{#str}} password {{/str}}</label>
-                    <input type="password" name="password" id="password" value=""
-                        class="form-control"
-                        placeholder={{#quote}}{{#str}}password{{/str}}{{/quote}}>
-
-                    {{#rememberusername}}
-                        <div class="rememberpass m-t-1">
-                            <input type="checkbox" name="rememberusername" id="rememberusername" value="1" {{#username}}checked="checked"{{/username}} />
-                            <label for="rememberusername">{{#str}} rememberusername, admin {{/str}}</label>
+                    </div>
+                    <div id="loginauthsection" class="row-fluid">
+                    <div class="span6<?php if (isloggedin() and !isguestuser()) echo ' hidden';?>">
+                        <div class="loginbox clearfix onecolumn">
+                        <div class="aailoginpanel">
+                            <h4 style="text-align:center">AAI Login</h4>
+                            <!-- EMBEDDED-WAYF-START -->
+                            <script type="text/javascript">// <![CDATA[
+                            var base_url = location.origin;
+                            var wayf_URL = "https://wayf.switch.ch/SWITCHaai/WAYF";
+                            var wayf_sp_entityID = base_url + "/shibboleth";
+                            var wayf_sp_handlerURL = base_url + "/Shibboleth.sso";
+                            var wayf_return_url = base_url + "/auth/shibboleth/index.php";
+                            var wayf_show_remember_checkbox = false;
+                            var wayf_auto_login = false;
+                            var wayf_hide_after_login = true;
+                            var wayf_most_used_idps =  new Array("https://aai-login.fh-htwchur.ch/idp/Authn/UserPassword");
+                            var wayf_hide_categories =  new Array("tertiaryb","uppersecondary");
+                            var wayf_unhide_idps = new Array("https://aai-login.fh-htwchur.ch/idp/shibboleth");
+                            var wayf_hide_idps = new Array();
+                            var wayf_use_improved_drop_down_list = true;
+                            var wayf_sp_samlDSURL = wayf_sp_handlerURL + "/Login";
+                            var wayf_auto_redirect_if_logged_in = false;
+                            // ]]></script>
+                            <script src="https://wayf.switch.ch/SWITCHaai/WAYF/embedded-wayf.js" type="text/javascript"></script>
+                            <noscript>
+                                <p><strong>Login für Studierende und Dozierende via&nbsp;
+                                <?php
+                                    $moodle_host_auth_shib = 'https://' . $_SERVER['HTTP_HOST'] . "/auth/shibboleth";
+                                    echo "<a href= \"" . $moodle_host_auth_shib ."\">SWITCHaai</a>";
+                                ?>
+                                mit HTW-Account-Daten:</strong>
+                                <!-- <a href="https://moodle.htwchur.ch/auth/shibboleth"><img src="http://moodle.htwchur.ch/aai_button.gif" style="margin-top: 5px; margin-left: auto; margin-right: auto;" /></a>   --></p>
+                            </noscript>
+                            <!-- EMBEDDED-WAYF-END -->
                         </div>
-                    {{/rememberusername}}
+                        </div>
+                    </div>
+                    <div class="<?php if (isloggedin() and !isguestuser()) echo 'span12'; else echo 'span6';?>">
 
-                    <button type="submit" class="btn btn-primary btn-block m-t-1" id="loginbtn">{{#str}}login{{/str}}</button>
-                </form>
+                    </div>
+                    </div>
+                    </div>
+                </section>
+
+        </div>
+  <hr>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle col-lg-12" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Manuelles Login
+    </button>
+    <div class="dropdown-menu col-lg-12" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item col-lg-12" href="#">
+
+
+
+                {{#cansignup}}
+                    <div class="sr-only">
+                        <a href="{{signupurl}}">{{#str}} tocreatenewaccount {{/str}}</a>
+                    </div>
+                {{/cansignup}}
+
+                {{#error}}
+                    <div class="loginerrors m-t-1">
+                        <a href="#" id="loginerrormessage" class="accesshide">{{error}}</a>
+                        <div class="alert alert-danger" role="alert">{{error}}</div>
+                    </div>
+                {{/error}}
+
+                <div class="row">
+                    <div class="col-md-4 push-md-1">
+                        <form class="m-t-1" action="{{loginurl}}" method="post" id="login">
+                            <input id="anchor" type="hidden" name="anchor" value="">
+                            <script>document.getElementById('anchor').value = location.hash;</script>
+
+                            <label for="username" class="sr-only">
+                                {{^canloginbyemail}}
+                                    {{#str}} username {{/str}}
+                                {{/canloginbyemail}}
+                                {{#canloginbyemail}}
+                                    {{#str}} usernameemail {{/str}}
+                                {{/canloginbyemail}}
+                            </label>
+                            <input type="text" name="username" id="username"
+                                class="form-control"
+                                value="{{username}}"
+                                placeholder={{#quote}}{{^canloginbyemail}}{{#str}}username{{/str}}{{/canloginbyemail}}{{#canloginbyemail}}{{#str}}usernameemail{{/str}}{{/canloginbyemail}}{{/quote}}>
+                            <label for="password" class="sr-only">{{#str}} password {{/str}}</label>
+                            <input type="password" name="password" id="password" value=""
+                                class="form-control"
+                                placeholder={{#quote}}{{#str}}password{{/str}}{{/quote}}>
+
+                            {{#rememberusername}}
+                                <div class="rememberpass m-t-1">
+                                    <input type="checkbox" name="rememberusername" id="rememberusername" value="1" {{#username}}checked="checked"{{/username}} />
+                                    <label for="rememberusername">{{#str}} rememberusername, admin {{/str}}</label>
+                                </div>
+                            {{/rememberusername}}
+
+                            <button type="submit" class="btn btn-primary btn-block m-t-1" id="loginbtn">{{#str}}login{{/str}}</button>
+                        </form>
+                    </div>
+
+                    <div class="col-md-4 push-md-3">
+                        <div class="forgetpass m-t-1">
+                            <p><a href="{{forgotpasswordurl}}">{{#str}}forgotten{{/str}}</a></p>
+                        </div>
+
+                        <div class="m-t-1">
+                            {{#str}} cookiesenabled {{/str}}
+                            {{{cookieshelpiconformatted}}}
+                        </div>
+                    {{#canloginasguest}}
+                        <div class="m-t-2">
+                            <p>{{#str}}someallowguest{{/str}}</p>
+                            <form action="{{loginurl}}" method="post" id="guestlogin">
+                                <input type="hidden" name="username" value="guest" />
+                                <input type="hidden" name="password" value="guest" />
+                                <button class="btn btn-secondary btn-block" type="submit">{{#str}}loginguest{{/str}}</button>
+                            </form>
+                        </div>
+                    {{/canloginasguest}}
+
+                {{#hasidentityproviders}}
+                        <h6 class="m-t-2">{{#str}} potentialidps, auth {{/str}}</h6>
+                        <div class="potentialidplist" class="m-t-1">
+                            {{#identityproviders}}
+                                <div class="potentialidp">
+                                    <a href="{{url}}" title={{#quote}}{{name}}{{/quote}} class="btn btn-secondary btn-block">
+                                        {{#iconurl}}
+                                            <img src="{{iconurl}}" alt="" width="24" height="24"/>
+                                        {{/iconurl}}
+                                        {{name}}
+                                    </a>
+                                </div>
+                            {{/identityproviders}}
+                        </div>
+                {{/hasidentityproviders}}
+                    </div>
+                </div>
             </div>
+        </div>
+        </div>
+        </div>
 
-            <div class="col-md-4 push-md-3">
-                <div class="forgetpass m-t-1">
-                    <p><a href="{{forgotpasswordurl}}">{{#str}}forgotten{{/str}}</a></p>
-                </div>
 
-                <div class="m-t-1">
-                    {{#str}} cookiesenabled {{/str}}
-                    {{{cookieshelpiconformatted}}}
+        {{#hasinstructions}}
+        <div class="row">
+        <div class="col-xl-6 push-xl-3 m-2-md col-sm-8 push-sm-2">
+        <div class="card">
+            <div class="card-block">
+                <div class="card-title">
+                    <h2>{{#str}}firsttime{{/str}}</h2>
                 </div>
-            {{#canloginasguest}}
-                <div class="m-t-2">
-                    <p>{{#str}}someallowguest{{/str}}</p>
-                    <form action="{{loginurl}}" method="post" id="guestlogin">
-                        <input type="hidden" name="username" value="guest" />
-                        <input type="hidden" name="password" value="guest" />
-                        <button class="btn btn-secondary btn-block" type="submit">{{#str}}loginguest{{/str}}</button>
+                <div>
+                {{{instructions}}}
+                {{#cansignup}}
+                    <form class="m-t-1" action="{{signupurl}}" method="get" id="signup">
+                        <button type="submit" class="btn btn-secondary">{{#str}}startsignup{{/str}}</button>
                     </form>
+                {{/cansignup}}
                 </div>
-            {{/canloginasguest}}
-
-        {{#hasidentityproviders}}
-                <h6 class="m-t-2">{{#str}} potentialidps, auth {{/str}}</h6>
-                <div class="potentialidplist" class="m-t-1">
-                    {{#identityproviders}}
-                        <div class="potentialidp">
-                            <a href="{{url}}" title={{#quote}}{{name}}{{/quote}} class="btn btn-secondary btn-block">
-                                {{#iconurl}}
-                                    <img src="{{iconurl}}" alt="" width="24" height="24"/>
-                                {{/iconurl}}
-                                {{name}}
-                            </a>
-                        </div>
-                    {{/identityproviders}}
-                </div>
-        {{/hasidentityproviders}}
             </div>
         </div>
+        </div>
+        </div>
+
+        {{/hasinstructions}}
+
+      </a>
+
     </div>
-</div>
-</div>
-</div>
+  </div>
 
 
-{{#hasinstructions}}
-<div class="row">
-<div class="col-xl-6 push-xl-3 m-2-md col-sm-8 push-sm-2">
-<div class="card">
-    <div class="card-block">
-        <div class="card-title">
-            <h2>{{#str}}firsttime{{/str}}</h2>
-        </div>
-        <div>
-        {{{instructions}}}
-        {{#cansignup}}
-            <form class="m-t-1" action="{{signupurl}}" method="get" id="signup">
-                <button type="submit" class="btn btn-secondary">{{#str}}startsignup{{/str}}</button>
-            </form>
-        {{/cansignup}}
-        </div>
-    </div>
-</div>
-</div>
-</div>
-{{/hasinstructions}}
 
 {{#js}}
     {{#error}}

@@ -229,6 +229,7 @@ a.list-group-item {
   // nav#anothernav {
   //   padding: 10px 6px 6px 8px !important;
   // }
+  //
 }
 #anothernav.p-a-1{
   padding: .8rem 1rem .6rem 1rem !important;
@@ -254,6 +255,11 @@ flex-direction: row;
   z-index: 1;
   background: $wedgewood;
 }
+//   /**    PAGEHEADER */
+#page-header{
+  margin-top:80px;
+}
+
 //   /**    BREADCRUMBs */
 
 .breadcrumb {
@@ -345,8 +351,8 @@ flex-direction: row;
   background-color: $white !important;
 
   img.activityicon {
-    -webkit-filter: grayscale(70%);
-    filter: grayscale(70%);
+    -webkit-filter: grayscale(50%);
+    filter: grayscale(50%);
   }
 }
 //* later version */
@@ -456,4 +462,10 @@ button {
 }
 button.close, .moodle-dialogue-base button.closebutton{
   margin-top: -6px;
+}
+.dimmed_text{
+  color:#bbb;
+}
+#accordion .nav-tabs {
+    margin-bottom: 10px;
 }
