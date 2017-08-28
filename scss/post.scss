@@ -469,3 +469,139 @@ button.close, .moodle-dialogue-base button.closebutton{
 #accordion .nav-tabs {
     margin-bottom: 10px;
 }
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .open>.nav-link, .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.open, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .open>.nav-link:focus, .navbar-light .navbar-nav .active>.nav-link:focus, .navbar-light .navbar-nav .nav-link.open:focus, .navbar-light .navbar-nav .nav-link.active:focus, .navbar-light .navbar-nav .open>.nav-link:hover, .navbar-light .navbar-nav .active>.nav-link:hover, .navbar-light .navbar-nav .nav-link.open:hover, .navbar-light .navbar-nav .nav-link.active:hover{
+  color: #fff;
+}
+
+
+/*additional from page FIXME*/
+
+.chart-area {
+     max-width: 50%;
+     position: inherit;
+ }
+
+.fbbuttons {
+     margin-bottom: 25px;
+}
+svg .blue{
+    fill: #4B92A4;
+  }
+
+  svg .blue:hover{
+    fill: #4B92A4;
+  }
+
+.fbbuttons .btn {
+   margin-right: 10px;
+}
+
+.fbbuttons .btn-warning, .fbbuttons .btn-outline-warning {
+   margin-left: 25px;
+}
+    .feedback_info svg{
+height:400px;
+
+}
+.feedback_info .tick{
+font-size: 10px;
+}
+
+
+    #feedback_analysis svg{
+height:100%;
+}
+
+#feedback_analysis {
+    margin-bottom: 30px;
+}
+
+/*barchart_test*/
+
+#feedback_analysis {
+  padding: 15px;
+  box-sizing: content-box;
+}
+div.bar {
+  display: inline-block;
+  width: 20px;
+  height: 75px;
+  /* Gets overriden by D3-assigned height below */
+  margin: 20px 4px;
+  background-color: #4b92a4;
+}
+.bar {
+  fill: #4B92A4;
+}
+.bar:hover {
+  fill: #C76D6D;
+}
+.axis {
+  font: 8px "Roboto" sans-serif;
+  color: #333;
+}
+.tick {
+  color: #bbb;
+}
+.axis path, .axis line {
+  fill: none;
+  stroke: #bbb;
+  shape-rendering: crispEdges;
+}
+.axis text {
+  fill: #333;
+  margin: 2px;
+}
+
+@page {
+  size: 7.267in 11.692in;
+  margin: 0.25in 0.22in 0.25in 0.22in;
+}
+@media print {
+  .analysis, tbody, .chart-area {
+    page-break-inside: avoid !important;
+    width: 100%;
+  }
+  body {
+    font-family: 'Roboto', Helvetica, sans-serif;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  /* HTW Print Styles */
+  aside #block-region-side-post, #dock, #page-navbar, #block-region-side-pre, #inst4, .navbar .navbar-inner, .logo, .nav-tabs a, aside#block-region-side-post, .fbbuttons{
+    display: none !important;
+    width: 0px!important;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+  #region-main, .page-context-header, .page-header-headings {
+    left: 0!important;
+    float: left!important;
+    width: 100% !important;
+  }
+  .page-context-header, .page-header-headings {
+    margin-left: -16px;
+  }
+  .analysis th {
+    white-space: normal !important;
+  }
+  #page-header:before {
+    margin-top: 20px;
+    font-family: 'Roboto', Helvetica, sans-serif;
+    font-size: 16px;
+    content: 'HTW Chur | Hochschule für Technik und Wirtschaft';
+    max-height: 10px;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+  }
+  #pageheader {
+    display: none !important;
+    height: 0 !important;
+  }
+  #region-main, .page-header-headings, .page-context-header, {
+    float: left!important;
+    left: 0 !important;
+    padding: 0px 30px 0px 30px;
+  }
+}

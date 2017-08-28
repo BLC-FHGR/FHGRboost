@@ -44,15 +44,23 @@
 require(['theme_htwboost/feedback'], function(fb) {
     fb.checkFeedbackAnalysis();
 });
+
 {{/js}}
 
 <div class="feedback_info">
+  <!-- <button class="btn btn-outline-primary" onclick="printPage()">DruckeNN</button>
+  <script lang="javascript">
+  function printPage() {
+      window.print();
+  }
+  </script> -->
     <span
         class="feedback_info">{{#str}}completed_feedbacks, mod_feedback{{/str}}: </span><span
         class="feedback_info_value">{{completedcount}}</span>
 </div>
 
 <div class="feedback_info">
+
     <span
         class="feedback_info">{{#str}}questions, mod_feedback{{/str}}: </span><span
         class="feedback_info_value">{{itemscount}}</span>
@@ -60,6 +68,7 @@ require(['theme_htwboost/feedback'], function(fb) {
 
 {{#timeopen}}
     <div class="feedback_info">
+
         <span
             class="feedback_info">{{#str}}feedbackopen, mod_feedback{{/str}}: </span><span
             class="feedback_info_value">{{timeopen}}</span>

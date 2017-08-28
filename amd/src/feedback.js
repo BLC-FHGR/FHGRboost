@@ -96,7 +96,9 @@ function toggleBubbleChart() {
         loadBubbleChart();
     }
 }
-
+function printPage() {
+    window.print();
+};
 function extendUI() {
     // insert our ui before the feedback_info
     // The chart area is hidden by default
@@ -110,12 +112,15 @@ function extendUI() {
         .append("<span id=\"fbanalysis_bubblechart\" class=\"btn btn-outline-primary\">Bubble Chart</span>")
         .append("<span id=\"fbanalysis_boxchart\" class=\"btn btn-outline-primary\">Box Chart</span>")
         // The live update should be deactivated in no chart is visible.
-        .append("<span id=\"fbanalysis_liveupdate\" class=\"btn btn-outline-warning\">Live Update (beta)</span>");
+        .append("<span id=\"fbanalysis_liveupdate\" class=\"btn btn-outline-warning\">Live Update (beta)</span>")
+        .append("<span id=\"fbanalysis_print\" class=\"btn btn-outline-warning\">Print Page</span>");
+
 
     $("#fbanalysis_barchart").click(toggleBarChart);
     $("#fbanalysis_boxchart").click(toggleBoxChart);
     $("#fbanalysis_bubblechart").click(toggleBubbleChart);
     $("#fbanalysis_liveupdate").click(toggleLiveUpdate);
+    $("#fbanalysis_print").click(printPage);
 }
 
 // this shows or hides the SVG, depending on the activation state of the control button.
