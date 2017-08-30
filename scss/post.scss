@@ -11,6 +11,7 @@
 //   /**    CARDS */
 //   /**    BUTTONS */
 //   /**    FOOTER */
+//   /**    /* HTW Print Styles */
 //* ***************** */
 //** START Styles  **//
 //* ***************** */
@@ -261,6 +262,14 @@ flex-direction: row;
 }
 
 //   /**    BREADCRUMBs */
+
+.page-header-image img{
+	width: 50px;
+	height: 50px;
+}
+.page-header-headings h1{
+	font-size:2.0rem
+}
 
 .breadcrumb {
   background-color: none;
@@ -533,6 +542,10 @@ div.bar {
 }
 .bar {
   fill: #4B92A4;
+  -moz-transition: all .2s ease-in;
+-o-transition: all .2s ease-in;
+-webkit-transition: all .2s ease-in;
+transition: all .2s ease-in;
 }
 .bar:hover {
   fill: #C76D6D;
@@ -553,55 +566,177 @@ div.bar {
   fill: #333;
   margin: 2px;
 }
+fb-circle{
+  fill: #4B92A4;
+  -moz-transition: all .2s ease-in;
+-o-transition: all .2s ease-in;
+-webkit-transition: all .2s ease-in;
+transition: all .2s ease-in;
+  &:hover {
+    fill: #C76D6D;
+  }
+}
+
+
+ // UPLOAD CONTENT SECTION //INTERACTION
+
+ .dndupload-progressbars, .dndupload-uploadinprogress{
+   min-width: 20px;
+   min-height: 20px;
+   background-color: $wedgewood;
+   color:$white;
+   animation-name: pulse_animation;
+	animation-duration: 2000ms;
+	transform-origin:20% 20%;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+ }
+ @keyframes pulse_animation {
+	0% { transform: scale(1); }
+	30% { transform: scale(1); }
+	40% { transform: scale(1.08); }
+	50% { transform: scale(1); }
+	60% { transform: scale(1); }
+	70% { transform: scale(1.05); }
+	80% { transform: scale(1); }
+	100% { transform: scale(1); }
+}
+ .dndupload-progressbars:first-child {
+
+
+   border: 16px solid #f3f3f3; /* Light grey */
+       border-top: 16px solid #3498db; /* Blue */
+       border-radius: 50%;
+       width: 120px;
+       height: 120px;
+       animation: spin 2s linear infinite;
+  //  content:" loading ";
+  //  color: $white;
+ }
+ @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+  /* HTW Print Styles */
 
 @page {
   size: 7.267in 11.692in;
   margin: 0.25in 0.22in 0.25in 0.22in;
 }
-@media print {
-  .analysis, tbody, .chart-area {
-    page-break-inside: avoid !important;
-    width: 100%;
+  @media print {
+    #page-header:before {
+        margin-top: 20px;
+        font-family: 'Roboto', Helvetica, sans-serif;
+        font-size: 16px;
+        content: 'HTW Chur | Hochschule für Technik und Wirtschaft';
+        max-height: 10px;
+        margin-bottom: 0px !important;
+        padding-bottom: 0px !important;
+      }
+    header, #page-header{
+      page-break-after: avoid!important;
+    }
+
+  .chart-area{
+    page-break-inside: avoid!important;
+    page-break-before: avoid!important;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
   }
-  body {
-    font-family: 'Roboto', Helvetica, sans-serif;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+
+  .chart-area {
+    position: relative!important;
+    page-break-inside: avoid!important;
+    canvas {
+      position: relative;
+      page-break-inside: avoid!important;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
   }
-  /* HTW Print Styles */
-  aside #block-region-side-post, #dock, #page-navbar, #block-region-side-pre, #inst4, .navbar .navbar-inner, .logo, .nav-tabs a, aside#block-region-side-post, .fbbuttons{
-    display: none !important;
+.card, #page-enrol-users #filterform, .que .history, .userprofile .profile_tree section, .groupinfobox, .forumpost, .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax .yui-layout-unit-right, .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax .yui-layout-unit-bottom, .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax #chat-messages .chat-message.course-theme, .well{
+  background: none;
+}
+  aside #block-region-side-post, footer, .form-buttons, #dock, #page-navbar, #block-region-side-pre, #inst4, .navbar .navbar-inner, .logo, .nav-tabs a, aside#block-region-side-post, .fbbuttons{
+    display: none!important;
     width: 0px!important;
     -moz-appearance: none;
     -webkit-appearance: none;
   }
-  #region-main, .page-context-header, .page-header-headings {
-    left: 0!important;
-    float: left!important;
-    width: 100% !important;
+
+  #region-main{
+    max-width: 7in;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
   }
-  .page-context-header, .page-header-headings {
-    margin-left: -16px;
+  .chart-area, .chart-image, .analysis{
+      // max-width: 5in!important;
+      // height:6in!important;
+      position: relative;
+      page-break-inside: avoid!important;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+      canvas {
+        max-width: 5in!important;
+        max-height:3.3in!important;
+        position: relative;
+        page-break-inside: avoid!important;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+      }
   }
-  .analysis th {
-    white-space: normal !important;
-  }
-  #page-header:before {
-    margin-top: 20px;
-    font-family: 'Roboto', Helvetica, sans-serif;
-    font-size: 16px;
-    content: 'HTW Chur | Hochschule für Technik und Wirtschaft';
-    max-height: 10px;
-    margin-bottom: 0px !important;
-    padding-bottom: 0px !important;
-  }
-  #pageheader {
-    display: none !important;
-    height: 0 !important;
-  }
-  #region-main, .page-header-headings, .page-context-header, {
-    float: left!important;
-    left: 0 !important;
-    padding: 0px 30px 0px 30px;
-  }
+
 }
+
+
+//////////////OLD
+// @media print {
+//   .analysis, tbody, .chart-area {
+//     page-break-inside: avoid !important;
+//     // width: 100%;
+//   }
+//     body {
+//       font-family: 'Roboto', Helvetica, sans-serif;
+//       -webkit-print-color-adjust: exact;
+//       print-color-adjust: exact;
+//     }
+//     .form-buttons{
+//       display: none;
+//     }
+//     .chart-area {
+//       max-width: 5in;
+//       height:auto;
+//     }
+//   /* HTW Print Styles */
+//   aside #block-region-side-post, #dock, #page-navbar, #block-region-side-pre, #inst4, .navbar .navbar-inner, .logo, .nav-tabs a, aside#block-region-side-post, .fbbuttons{
+//     display: none !important;
+//     width: 0px!important;
+//     -moz-appearance: none;
+//     -webkit-appearance: none;
+//   }
+//   #region-main, .page-context-header, .page-header-headings {
+//     left: 0!important;
+//     float: left!important;
+//     width: 100% !important;
+//   }
+//   .page-context-header, .page-header-headings {
+//     margin-left: -16px;
+//   }
+//   .analysis th {
+//     white-space: normal !important;
+//   }
+//   #page-header:before {
+//     margin-top: 20px;
+//     font-family: 'Roboto', Helvetica, sans-serif;
+//     font-size: 16px;
+//     content: 'HTW Chur | Hochschule für Technik und Wirtschaft';
+//     max-height: 10px;
+//     margin-bottom: 0px !important;
+//     padding-bottom: 0px !important;
+//   }
+//   #pageheader {
+//     display: none !important;
+//     height: 0 !important;
+//   }
+//   #region-main, .page-header-headings, .page-context-header, {
+//     float: left!important;
+//     left: 0 !important;
+//     padding: 0px 30px 0px 30px;
+//   }
+// }
