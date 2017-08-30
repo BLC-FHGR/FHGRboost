@@ -27,7 +27,8 @@ define(["jquery", 'theme_htwboost/d3', "exports"], function($, d3, exports) {
     function setFraming(svg) {
         var yAxisBox = svg.node().getBBox();
         var chartHeight = yAxisBox.height + 10;
-
+        var chartWidth = yAxisBox.width + 10;
+        svg.attr("viewBox", `0 0 ${chartWidth} ${chartHeight}`);
         $("#feedback_analysis").height(Math.floor(chartHeight));
     }
 
@@ -37,7 +38,7 @@ define(["jquery", 'theme_htwboost/d3', "exports"], function($, d3, exports) {
         svg.selectAll("*").remove();
 
         var height = 500;
-        var width =  $("#feedback_analysis").width() - 50;
+        var width =  $("#feedback_analysis").width() - 50 ;
 
         var x = d3.scaleBand()
                   .range([0, width])

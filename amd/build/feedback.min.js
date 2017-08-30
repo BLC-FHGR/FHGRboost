@@ -9,13 +9,25 @@ function initSVGRoot() {
                     .append("svg")
                     // .attr("width", "50%")
                     // .attr("height", "100%")
-                    .attr("viewBox", "0 0 60 55")
-                    .attr("class", "fbanalysis-svg");
+                    // .attr("viewBox", "0 0 60 55")
+                    // .attr("class", "fbanalysis-svg");
     }
     else {
         // clear the SVG area
         svgRoot.selectAll("*").remove();
     }
+}
+
+function reRenderChart(){
+        if ($("#fbanalysis_boxchart").hasClass("btn-primary")) {
+          loadBoxChart();
+        }
+        if ($("#fbanalysis_barchart").hasClass("btn-primary")) {
+          loadBarChart();
+        }
+        if ($("#fbanalysis_bubblechart").hasClass("btn-primary")) {
+          loadBubbleChart();
+        }
 }
 
 function loadBoxChart() {
@@ -123,6 +135,8 @@ function extendUI() {
     $("#fbanalysis_bubblechart").click(toggleBubbleChart);
     $("#fbanalysis_liveupdate").click(toggleLiveUpdate);
     $("#fbanalysis_print").click(printPage);
+
+    $( window ).resize(reRenderChart);
 }
 
 // this shows or hides the SVG, depending on the activation state of the control button.
