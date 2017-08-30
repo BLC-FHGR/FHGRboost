@@ -576,6 +576,21 @@ transition: all .2s ease-in;
     fill: #C76D6D;
   }
 }
+.fbanalysis-svg-container {
+ position: relative;
+ height: 0;
+ width: 100%;
+ padding: 0;
+ padding-bottom: 100%;
+ /* override this inline for aspect ratio other than square */
+}
+.fbanalysis-svg {
+  position: absolute;
+height: 100%;
+width: 100%;
+left: 0;
+top: 0;
+}
 
 
  // UPLOAD CONTENT SECTION //INTERACTION
@@ -585,25 +600,23 @@ transition: all .2s ease-in;
    min-height: 20px;
    background-color: $wedgewood;
    color:$white;
-   animation-name: pulse_animation;
-	animation-duration: 2000ms;
-	transform-origin:20% 20%;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
+  //  animation-name: pulse_animation;
+	// animation-duration: 2000ms;
+	// transform-origin:20% 20%;
+	// animation-iteration-count: infinite;
+	// animation-timing-function: linear;
  }
- @keyframes pulse_animation {
-	0% { transform: scale(1); }
-	30% { transform: scale(1); }
-	40% { transform: scale(1.08); }
-	50% { transform: scale(1); }
-	60% { transform: scale(1); }
-	70% { transform: scale(1.05); }
-	80% { transform: scale(1); }
-	100% { transform: scale(1); }
-}
+//  @keyframes pulse_animation {
+// 	0% { transform: scale(1); }
+// 	30% { transform: scale(1); }
+// 	40% { transform: scale(1.08); }
+// 	50% { transform: scale(1); }
+// 	60% { transform: scale(1); }
+// 	70% { transform: scale(1.05); }
+// 	80% { transform: scale(1); }
+// 	100% { transform: scale(1); }
+// }
  .dndupload-progressbars:first-child {
-
-
    border: 16px solid #f3f3f3; /* Light grey */
        border-top: 16px solid #3498db; /* Blue */
        border-radius: 50%;

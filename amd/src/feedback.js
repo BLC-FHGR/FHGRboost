@@ -7,8 +7,10 @@ function initSVGRoot() {
     if (!svgRoot) {
         svgRoot = d3.select("#feedback_analysis")
                     .append("svg")
-                    .attr("width", "100%")
-                    .attr("height", "100%");
+                    // .attr("width", "50%")
+                    // .attr("height", "100%")
+                    .attr("viewBox", "0 0 60 55")
+                    .attr("class", "fbanalysis-svg");
     }
     else {
         // clear the SVG area
@@ -102,7 +104,7 @@ function printPage() {
 function extendUI() {
     // insert our ui before the feedback_info
     // The chart area is hidden by default
-    $(".feedback_info:first-child").before("<div id=\"feedback_analysis\" class=\"hidden\">");
+    // $(".feedback_info:first-child").before("<div id=\"feedback_analysis\" class=\"hidden\">");
 
     // Insert the functional buttons. These buttons are always visible
 
