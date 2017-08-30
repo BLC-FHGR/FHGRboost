@@ -28,8 +28,10 @@ define(["jquery", 'theme_htwboost/d3', "exports"], function($, d3, exports) {
         var yAxisBox = svg.node().getBBox();
         var chartHeight = yAxisBox.height + 10;
         var chartWidth = yAxisBox.width + 10;
-        svg.attr("viewBox", `0 0 ${chartWidth} ${chartHeight}`);
-        $("#feedback_analysis").height(Math.floor(chartHeight));
+        // inspired by https://tympanus.net/codrops/2014/08/19/making-responsive-with-css/
+        var relheight = chartHeight / chartWidth;
+        svg.attr("viewBox", "0 0 " + chartWidth + " " + chartHeight);
+        $("#feedback_analysis").height(Math.floor(100 * relheight));
     }
 
     function renderChart(svg, data) {
@@ -37,7 +39,7 @@ define(["jquery", 'theme_htwboost/d3', "exports"], function($, d3, exports) {
 
         svg.selectAll("*").remove();
 
-        var height = 500;
+        var height = 300;
         var width =  $("#feedback_analysis").width() - 50 ;
 
         var x = d3.scaleBand()

@@ -7,7 +7,7 @@ function initSVGRoot() {
     if (!svgRoot) {
         svgRoot = d3.select("#feedback_analysis")
                     .append("svg")
-                    // .attr("width", "50%")
+                    .attr("width", "80%")
                     // .attr("height", "100%")
                     // .attr("viewBox", "0 0 60 55")
                     // .attr("class", "fbanalysis-svg");
@@ -136,7 +136,7 @@ function extendUI() {
     $("#fbanalysis_liveupdate").click(toggleLiveUpdate);
     $("#fbanalysis_print").click(printPage);
 
-    $( window ).resize(reRenderChart);
+    // $( window ).resize(reRenderChart);
 }
 
 // this shows or hides the SVG, depending on the activation state of the control button.
