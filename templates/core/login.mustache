@@ -136,7 +136,9 @@
                             var wayf_sp_samlDSURL = wayf_sp_handlerURL + "/Login";
                             var wayf_auto_redirect_if_logged_in = false;
                             // ]]></script>
-                            <script src="https://wayf.switch.ch/SWITCHaai/WAYF/embedded-wayf.js" type="text/javascript"></script>
+                            {{! temporary solution until switch fixes the bug on their side.}}
+                            <script src="https://mdl-tst.htwchur.ch/embedded-wayf.js" type="text/javascript"></script>
+                            {{! <script src="https://wayf.switch.ch/SWITCHaai/WAYF/embedded-wayf.js" type="text/javascript"></script> }}
                             <noscript>
                                 <p><strong>Login für Studierende und Dozierende via&nbsp;
                                 <?php
