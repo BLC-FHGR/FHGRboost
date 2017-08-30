@@ -122,12 +122,12 @@ function extendUI() {
 
     $(".form-buttons").prepend("<div id=\"feedback_vizbuttons\" class=\"singlebutton\">");
     $("#feedback_vizbuttons")
-        .append("<span id=\"fbanalysis_barchart\" class=\"btn btn-outline-primary\">Bar Chart</span>")
-        .append("<span id=\"fbanalysis_bubblechart\" class=\"btn btn-outline-primary\">Bubble Chart</span>")
-        .append("<span id=\"fbanalysis_boxchart\" class=\"btn btn-outline-primary\">Box Chart</span>")
+        .append("<span id=\"fbanalysis_barchart\" class=\"btn btn-outline-primary fbbutton\">Bar Chart</span>")
+        .append("<span id=\"fbanalysis_bubblechart\" class=\"btn btn-outline-primary fbbutton\">Bubble Chart</span>")
+        .append("<span id=\"fbanalysis_boxchart\" class=\"btn btn-outline-primary fbbutton\">Box Chart</span>")
         // The live update should be deactivated in no chart is visible.
-        .append("<span id=\"fbanalysis_liveupdate\" class=\"btn btn-outline-warning\">Live Update (beta)</span>")
-        .append("<span id=\"fbanalysis_print\" class=\"btn btn-outline-warning\">Print Page</span>");
+        .append("<span id=\"fbanalysis_liveupdate\" class=\"btn btn-outline-warning fbbutton\">Live Update (beta)</span>")
+        .append("<span id=\"fbanalysis_print\" class=\"btn btn-secondary printbtn\">Print Page</span>");
 
 
     $("#fbanalysis_barchart").click(toggleBarChart);
