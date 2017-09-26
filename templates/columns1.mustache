@@ -70,4 +70,7 @@
 </html>
 {{#js}}
 require(['theme_boost/loader']);
+require(['jquery'], function($) {
+    $("#pc-for-in-progress>div").removeClass("hidden");
+});
 {{/js}}

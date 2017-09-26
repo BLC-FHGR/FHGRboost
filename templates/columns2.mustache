@@ -124,5 +124,8 @@ require(['theme_boost/loader']);
 require(['theme_boost/drawer'], function(mod) {
     mod.init();
 });
-
+require(['jquery'], function($) {
+    $("#pc-for-in-progress>div").removeClass("hidden");
+    $("#pb-for-in-progress").empty();
+});
 {{/js}}
