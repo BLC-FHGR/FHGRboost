@@ -5,7 +5,7 @@ define(["jquery", 'theme_htwboost/d3', "exports"], function($, d3, exports) {
     var ylab = [];
     var xval = [];
 
-    // var toppadding = 150;
+var toppadding = 150;
 
    function handleData(data) {
        if (data) {
