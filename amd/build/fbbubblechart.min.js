@@ -70,9 +70,9 @@ var toppadding = 150;
         y.domain(ylab);
         x.domain([d3.min(xlab) - 1, d3.max(xlab)]);
 
-        // add the bubble grid
+        // add the bubble grid !!! caution: horrible code #FIXME (transform -250 is not what it should be)
         var gr = svg.append("g")
-                    .attr("transform", "translate(50,50)");
+                    .attr("transform", "translate(50,-250)");
 
         gr.selectAll(".circle")
           .data(xval)
