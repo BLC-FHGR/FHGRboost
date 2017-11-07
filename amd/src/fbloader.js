@@ -3,7 +3,7 @@ define(["exports", "jquery", "theme_htwboost/jqurlparam"], function(exports, $) 
     var liveUpdate = false;
     var chartData = {};
     var liveHandler;
-
+    console.log( "foo fbloader.js ");
     function checkLiveUpdate() {
         if (liveUpdate) {
             setTimeout(function() {exports.load(liveHandler);}, 5000);

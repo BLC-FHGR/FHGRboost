@@ -1,0 +1,109 @@
+/*additional from page FIXME*/
+.chart-area {
+  max-width: 50%;
+  position: inherit;
+}
+
+.fbbuttons {
+  margin-bottom: 25px;
+
+  .btn {
+    margin-right: 10px;
+  }
+}
+
+// svg .blue {
+//   fill: #4B92A4;
+// }
+//
+// svg .blue:hover {
+//   fill: #4B92A4;
+// }
+
+.fbbuttons .btn-outline-warning,
+.fbbuttons .btn-warning {
+  margin-left: 25px;
+}
+
+#feedback_analysis {
+  box-sizing: content-box;
+  min-height: 50vh;
+  svg {
+    height: 100%;
+    padding:10px;
+    padding-left: 8vw;
+  }
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 120px;
+  // height: 28px;
+  padding: 4px;
+  color: $wedgewood-dark;
+  box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+  font: 12px sans-serif;
+  background: $iceblue;
+  border: 0;
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.bar,
+.fb-circle {
+  display: inline-block;
+  margin: 120px 4px;
+  fill: #4B92A4;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.bar:hover,
+.fb-circle:hover {
+  fill: #C76D6D;
+}
+
+.axis {
+  color: #333;
+}
+
+.tick {
+  color: #bbb;
+}
+
+.axis line,
+.axis path {
+  fill: none;
+  stroke: #bbb;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  fill: #333;
+  margin: 2px;
+}
+
+fb-circle {
+  fill: #4B92A4;
+  transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+
+  &:hover {
+    fill: #C76D6D;
+  }
+}
+
+.printbtn {
+  margin-left: 0.5rem;
+  border: 4px solid #4b92a4;
+  text-transform: uppercase;
+}
+
+.fbbutton {
+  margin-left: 0.5rem;
+}

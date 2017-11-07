@@ -4,12 +4,13 @@ define(["jquery", 'theme_htwboost/d3', "exports"], function($, d3, exports) {
     var xlab = [];
     var ylab = [];
     var xval = [];
-
+      console.log( "foo fbchart fuck");
    function handleData(data) {
        if (data) {
            ylab = [];
            xlab = [];
            xval = [];
+
             data.map(function(question) {
                 if (type.indexOf(question.typ) >= 0) {
                     ylab = question.answerValues.map(function (arr) {
@@ -23,11 +24,14 @@ define(["jquery", 'theme_htwboost/d3', "exports"], function($, d3, exports) {
             });
         }
     }
-
+    console.log(xval);
+    console.log(xlab);
+    console.log(ylab);
     function setFraming(svg) {
         var yAxisBox = svg.node().getBBox();
         var chartHeight = yAxisBox.height + 10;
         var chartWidth = yAxisBox.width + 10;
+        console.log (yAxisBox.width);
         // inspired by https://tympanus.net/codrops/2014/08/19/making-responsive-with-css/
         var relheight = chartHeight / chartWidth;
         svg.attr("viewBox", "0 0 " + chartWidth + " " + chartHeight);

@@ -1,0 +1,153 @@
+@media (min-width:320px) {
+  #page-header {
+    margin-top: 0px;
+  }
+}
+@media (min-width:480px) {
+  #page-header {
+    margin-top: 60px;
+  }
+}
+@media (min-width:600px) {
+  /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+
+}
+@media (min-width:801px) {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+
+@media (min-width:1025px) {
+  /* big landscape tablets, laptops, and desktops */
+}
+
+@media (min-width:1281px) {
+  /* hi-res laptops and desktops */
+  .toolbar {
+    width: 100%;
+    min-width: 100% - $drawer-width;
+    max-width: 100%;
+  }
+}
+
+//***************************************************
+//
+// Extra small devices (portrait phones, less than 576px)
+
+@media (max-width: 575px) {
+  .course-content ul.section {
+    margin: 0;
+  }
+
+  #page-enrol-users #filterform,
+  .card-block,
+  .userprofile .profile_tree section,
+  .well,
+  .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax #chat-messages .chat-message.course-theme,
+  .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax .yui-layout-unit-bottom,
+  .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax .yui-layout-unit-right {
+    padding: 0;
+  }
+}
+//***************************************************
+//
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767px) {
+  //fix margins and paddings
+  //should be less in order to see more on mobile
+  //06.11.2017 hkum
+  .course-content ul.section {
+    margin: 0.5rem;
+  }
+
+  #page-enrol-users #filterform,
+  .card-block,
+  .userprofile .profile_tree section,
+  .well,
+  .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax #chat-messages .chat-message.course-theme,
+  .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax .yui-layout-unit-bottom,
+  .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax .yui-layout-unit-right {
+    padding: 0.5rem;
+  }
+
+  #page-header {
+    // margin-top: 0.5rem;
+
+    .p-a-1 {
+      padding: 0.1rem 1rem !important;
+    }
+  }
+
+  #page.container-fluid {
+    padding: 1rem;
+  }
+  //fix cards on landing page : status is below title -
+  //should be inline
+  //06.11.2017 hkum
+  // .block_myoverview .courses-view-course-item {
+  //   height: 100px !important;
+  // }
+
+  .card.courses-view-course-item {
+    .hidden-sm-up.hidden-phone {
+      display: inline-flex;
+    }
+
+    .h5 {
+      padding: 1.2rem 0 0 1.2rem;
+    }
+  }
+  //fix course view description : overflow not hidden / text outbound
+  //should be within white box
+  //06.11.2017 hkum
+  .section .activity .activityinstance,
+  .section .activity .activityinstance div {
+    display: block;
+    word-break: break-all;
+  }
+
+  .mod-indent-outer {
+    display: block;
+  }
+  //No Edit functionality in Mobile Version
+  //the toolbox is not shown --> the margin top is not necessary
+  //06.11.2017 hkum
+  // #page-header {
+  //   margin-top: 0;
+  // }
+
+}
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991px) {
+  //fix cards on landing page : status is below title -
+  //should be inline
+  //06.11.2017 hkum
+  .block_myoverview .courses-view-course-item {
+    height: 160px;
+    overflow-y: hidden;
+  }
+
+  .card.courses-view-course-item {
+    .hidden-sm-up.hidden-phone {
+      display: inline-flex;
+    }
+
+    .h5 {
+      padding: 1.2rem 0 0 1.2rem;
+    }
+  }
+  //toolbox is not responsive on smaller displays
+  //buttons should be in a row
+  //06.11.2017 hkum
+  .context_header_settings_menu {
+    display: block;
+    flex-direction: row;
+  }
+  //
+  // #page-header {
+  //   margin-top: 80px;
+  // }
+}
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199px) {}
+// Extra large devices (large desktops)
+// No media query since the extra-large breakpoint has no upper bound on its width

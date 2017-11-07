@@ -1,22 +1,20 @@
 // Post SCSS for the theme.
-// Styles
-// /*    GENERAL */
-// /*    FONTS */
-// /*    GUI ELEMENTS */
-//   /**    NAVIGATION TOP */
-//   /**    NAVIGATION LEFT */
-//   /**    TOOLBOX */
-//   /**    BREADCRUMBs */
-//   /**    EDITOR ATTO */
-//   /**    CARDS */
-//   /**    BUTTONS */
-//   /**    FOOTER */
-//   /**    /* HTW Print Styles */
-//* ***************** */
-//** START Styles  **//
-//* ***************** */
+
 // /*    GENERAL */
 // Overwritten body attributes */
+@import 'moodle/breadcrumb';
+@import 'moodle/buttons';
+@import 'moodle/cards';
+@import 'moodle/course';
+@import 'moodle/feedback_analysis';
+@import 'moodle/navigation';
+@import 'moodle/pageheader';
+@import 'moodle/print';
+@import 'moodle/quizzes';
+@import 'moodle/toolbox';
+@import 'moodle/mobile';
+// @import 'moodle/buttons';
+// @import 'moodle/inputforms';
 
 body {
   background-color: $white;
@@ -24,8 +22,6 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: normal;
 }
-// /*    FONTS */
-// Changes to typeface appearence
 
 h1,
 h2,
@@ -36,289 +32,21 @@ h6 {
   color: $wedgewood;
 }
 
+p {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+}
+
 a {
   color: $driftwood;
 }
-// #page{
-//   margin-top: 0;
-// }
-//
-// #page.container-fluid {
-//   margin-top: 6rem;
-// }
 
 .page-header-headings h1 {
   font-weight: 100;
 }
 
-.sectionname a {
-  background: $sand;
-  // background: rgba(white, 0.25);
-  color: $wedgewood;
-  font-family: 'Roboto', sans-serif;
-}
-// /*    GUI ELEMENTS */
-//   /**    NAVIGATION TOP */
 
-.navbar-light {
-  background-color: $wedgewood;
-  border-bottom: 0 solid;
-
-  .navbar-nav .nav-link {
-    color: $white;
-  }
-
-  .navbar-brand {
-    background-color: $wedgewood;
-  }
-
-  a {
-    color: $white;
-
-    .dropdown-item {
-      color: $wedgewood;
-    }
-  }
-
-  .popover-region-container {
-    a {
-        color: $wedgewood;
-    }
-  }
-}
-
-.dropdown-menu {
-  color: $wedgewood;
-
-  .icon {
-    color: $wedgewood;
-  }
-
-  .dropdown-item {
-    color: $wedgewood;
-  }
-}
-
-.course-content .current::before {
-  border-left: $brandred 4px solid;
-  content: "";
-  position: absolute;
-  }
-header {
-  padding: 0 !important;
-
-  .navbar {
-    margin: 0;
-    padding: 0;
-  }
-
-  .navbar-brand {
-    padding: 0;
-  }
-}
-
-.avatar {
-  img {
-    height: 16px;
-    width: 16px;
-  }
-}
-
-.navbar a {
-  margin-top: 4px;
-}
-
-.navbar .menubar {
-  margin-top: 6px;
-}
-
-.site-name {
-  margin-top: 2px;
-}
-//   /**    NAVIGATION LEFT */
-#nav-drawer {
-  background-color: $white;
-  box-shadow: $material-shadow1;
-  font-size: 1.2em;
-  font-weight: 300;
-}
-
-a.list-group-item {
-  i {
-    color: $wedgewood;
-  }
-
-  .list-group-item-action {
-    padding-left: 20px;
-  }
-
-  .font-weight-bold {
-    border-left: 10px solid $driftwood;
-    padding-left: 10px;
-  }
-
-  &:first-child,
-  &:last-child {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-}
-
-.list-group-item {
-  background-color: $white;
-  border: 0;
-
-  .media {
-    font-size: 0.8em;
-  }
-}
-
-#nav-drawer::-webkit-scrollbar {
-  display: none;
-}
-// navigation drawer left //
-
-[data-region="drawer"] {
-  top: 36px;
-  height: calc(100% - 36px);
-}
-
-#nav-drawer .list-group {
-  border-bottom: 1px solid #ddd;
-}
-//* TODO REPLACE ALL COLORS FROM DEFAULT.SCSS IN BOOST THEME WITH HTW BRAND COLORS//
-.navbar-light .navbar-nav .nav-link:hover{
-  // color:$wedgewood-dark;
-  font-weight: 900;
-}
-.tag-info, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity200 .info.release, .assignfeedback_editpdf_widget .label{
-  background-color: $wedgewood-dark;
-}
-//   /**    TOOLBOX */
-// TODO fix full width navigation!
-.toolbar {
-  // -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
-  background: $white;
-  box-shadow: $material-shadow1;
-  position: fixed;
-  top: 32px;
-  z-index: 2;
-  max-width: 87%;
-
-  .btn {
-    color: $white;
-    font-size: 13px;
-    padding: 0.2em 0.6em;
-    margin: 0 !important;
-    height: 24px;
-  }
-
-  a {
-    color: $white;
-  }
-
-  button {
-    font-size: 11px;
-    padding: 0.2em 0.6em;
-    margin: 0 !important;
-    height: 24px;
-  }
-  //
-  // nav#anothernav {
-  //   min-width: 100%;
-  // }
-  // button#single_button598ad5bce646c1 {
-  //     font-size: 11px;
-  //     padding: 1.2em 0.6em;
-  //     margin: 0!important;
-  //     height: 24px;
-  // }
-  // nav#anothernav {
-  //   padding: 10px 6px 6px 8px !important;
-  // }
-  //
-}
-#anothernav.p-a-1{
-  padding: .8rem 1rem .6rem 1rem !important;
-}
-.btn.btn-secondary.turneditingonoff{
-  background-color: $brandred!important;
-}
-
-
-.context_header_settings_menu {
-display: flex;
-flex-direction: row;
-  .turneditingonoff{
-    order: 1;
-  }
-  .btn {
-    padding: .35em .6em;
-    margin: .25rem!important;
-  }
-}
-
-.region_main_settings_menu {
-  z-index: 1;
-  background: $wedgewood;
-}
-//   /**    PAGEHEADER */
-#page-header{
-  margin-top:80px;
-}
-
-//   /**    BREADCRUMBs */
-
-.page-header-image img{
-	width: 50px;
-	height: 50px;
-}
-.page-header-headings h1{
-	font-size:2.0rem
-}
-
-.breadcrumb {
-  background-color: none;
-  font-weight: 100;
-
-  a {
-    background: $white;
-    border: 0 solid;
-    border-radius: 3px;
-    color: $wedgewood-dark;
-    font-weight: 600;
-    padding: 4px 10px;
-  }
-
-  .breadcrumb-item {
-    color: $wedgewood;
-  }
-
-  &:last-of-type {
-    // font-weight: 900;
-  }
-}
-
-.current-breadcrumb {
-  // background-color: $white;
-  font-weight: 100;
-
-  a {
-    background-color: $white;
-    border: 0 solid;
-    border-radius: 3px;
-    color: $wedgewood-dark;
-    padding: 4px 10px;
-  }
-
-  .breadcrumb-item {
-    color: $wedgewood;
-  }
-
-  &:last-of-type {
-    // font-weight: 900;
-  }
-}
 //   /**    EDITOR ATTO */
 .editor_atto_toolbar {
   i {
@@ -326,81 +54,9 @@ flex-direction: row;
   }
 
   button {
-    padding: 0px 9px;
+    padding: 0 9px !important;
   }
 }
-
-
-//   /**    CARDS AND BLOCKS */
-
-.card {
-  background: adjust-color($sand, $blue: 5);
-  border: 0;
-
-  .courses-view-course-item {
-    box-shadow: $material-shadow1;
-
-    &:hover {
-      box-shadow: $material-shadow1-hover;
-    }
-  }
-}
-
-.block {
-  background-color: $white;
-}
-
-.courses {
-  .coursebox {
-    box-shadow: $material-shadow1;
-    margin: 20px 0;
-    padding: 20px 10px;
-
-    &:hover {
-      background-color: $sand;
-      box-shadow: $material-shadow1-hover;
-      cursor: pointer;
-    }
-  }
-}
-//* activities to cards */
-.section {
-  li.activity {
-    margin: 4px 10px 4px 0;
-    padding: 2.2em;
-  }
-}
-
-.activity {
-  background-color: $white !important;
-
-  img.activityicon {
-    -webkit-filter: grayscale(50%);
-    filter: grayscale(50%);
-  }
-}
-//* later version */
-// .activity{
-//   column-count: 4;
-//   background-color: $white;
-//   box-shadow: $material-shadow1;
-//   display: inline-table;
-// }
-
-/* CARDS ON DASBOARD */
-
-@media (min-width: 1600px){
-  .block_myoverview .courses-view-course-item {
-      height: 100px !important;
-  }
-}
-
-.block_myoverview .courses-view-course-item {
-    height: 100px;
-    overflow-y: hidden;
-}
-
-
 //   /**    BUTTONS*/
 button {
   border: 0;
@@ -409,19 +65,18 @@ button {
   cursor: pointer;
   display: inline-block;
   height: 36px;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   line-height: 36px;
   padding: 0 2rem;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  transition: .2s ease-out;
+  transition: 0.2s ease-out;
 }
 
 .btn-secondary {
   background-color: $wedgewood;
   border-color: $wedgewood;
-  // box-shadow: $button-shadow;
   box-shadow: none;
   color: $white;
 
@@ -434,21 +89,22 @@ button {
 .btn-secondary {
   background-color: $wedgewood;
   border-color: $wedgewood;
-  // box-shadow: $button-shadow;
   color: $white;
   border: 0;
 }
 
 .tab-pane {
-  .btn-default{
+  .btn-default {
     background: $wedgewood;
   }
+
   .btn-default.active {
     background-color: $wedgewood-dark;
     border: 0;
     color: $white;
   }
 }
+
 .btn-default:active,
 .btn-default:focus,
 .btn-default:hover,
@@ -460,10 +116,20 @@ button {
   color: $white;
 }
 //   /**    FOOTER */
+footer.bg-inverse{
+  background-color: $wedgewood!important;
+      }
+footer{
 
-#pagefooter a {
-  color: $white;
-  font-weight: 900;
+      font-size: 1.3rem;
+      color: $white!important;
+      font-weight: 100;
+  a {
+    color: $white!important;
+    font-weight: 100;
+    text-decoration: underline;
+
+  }
 }
 /* FIX THIS SHIT SOON */
 #page-grade-grading-manage .actions .btn-group > .action.active,
@@ -493,231 +159,36 @@ button {
   z-index: 0;
 }
 
-.courses .coursebox{
+.courses .coursebox {
   background-color: $white;
 }
-.page-item.active .page-link, .page-item.active .page-link:focus, .page-item.active .page-link:hover{
-  z-index: 0;
-}
-button.close, .moodle-dialogue-base button.closebutton{
+
+.moodle-dialogue-base button.closebutton,
+button.close {
   margin-top: -6px;
 }
-.dimmed_text{
-  color:#bbb;
-}
-#accordion .nav-tabs {
-    margin-bottom: 10px;
-}
 
-.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .open>.nav-link, .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.open, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .open>.nav-link:focus, .navbar-light .navbar-nav .active>.nav-link:focus, .navbar-light .navbar-nav .nav-link.open:focus, .navbar-light .navbar-nav .nav-link.active:focus, .navbar-light .navbar-nav .open>.nav-link:hover, .navbar-light .navbar-nav .active>.nav-link:hover, .navbar-light .navbar-nav .nav-link.open:hover, .navbar-light .navbar-nav .nav-link.active:hover{
-  color: #fff;
-}
-
-
-/*additional from page FIXME*/
-
-.chart-area {
-     max-width: 50%;
-     position: inherit;
- }
-
-.fbbuttons {
-     margin-bottom: 25px;
-}
-svg .blue{
-    fill: #4B92A4;
-  }
-
-  svg .blue:hover{
-    fill: #4B92A4;
-  }
-
-.fbbuttons .btn {
-   margin-right: 10px;
-}
-
-.fbbuttons .btn-warning, .fbbuttons .btn-outline-warning {
-   margin-left: 25px;
-}
-    .feedback_info svg{
-height:400px;
-
-}
-.feedback_info .tick{
-font-size: 10px;
-}
-
-
-    #feedback_analysis svg{
-height:100%;
-}
-
-#feedback_analysis {
-  min-height:50vh;
-    margin-bottom: 30px;
-}
-
-/*barchart_test*/
-
-#feedback_analysis {
-  padding: 15px;
-  box-sizing: content-box;
-}
-div.bar {
-  display: inline-block;
-  width: 20px;
-  height: 75px;
-  /* Gets overriden by D3-assigned height below */
-  margin: 20px 4px;
-  background-color: #4b92a4;
-}
-.bar {
-  fill: #4B92A4;
-  -moz-transition: all .2s ease-in;
--o-transition: all .2s ease-in;
--webkit-transition: all .2s ease-in;
-transition: all .2s ease-in;
-}
-.bar:hover {
-  fill: #C76D6D;
-}
-.axis {
-  font: 8px "Roboto" sans-serif;
-  color: #333;
-}
-.tick {
+.dimmed_text {
   color: #bbb;
 }
-.axis path, .axis line {
-  fill: none;
-  stroke: #bbb;
-  shape-rendering: crispEdges;
-}
-.axis text {
-  fill: #333;
-  margin: 2px;
-}
-fb-circle{
-  fill: #4B92A4;
-  -moz-transition: all .2s ease-in;
--o-transition: all .2s ease-in;
--webkit-transition: all .2s ease-in;
-transition: all .2s ease-in;
-  &:hover {
-    fill: #C76D6D;
-  }
-}
-.printbtn {
-    margin-left: .5rem;
-    border: 4px solid #4b92a4;
-    text-transform: uppercase;
-}
-.fbbutton{
-    margin-left: .5rem;
-}
-// .fbanalysis-svg-container {
-//  position: relative;
-//  height: 0;
-//  width: 100%;
-//  padding: 0;
-//  padding-bottom: 100%;
-//  /* override this inline for aspect ratio other than square */
+
+//  // UPLOAD CONTENT SECTION //INTERACTION
+//
+//  .dndupload-progressbars, .dndupload-uploadinprogress{
+//    min-width: 20px;
+//    min-height: 20px;
+//    background-color: $wedgewood;
+//    color:$white;
 // }
-// .fbanalysis-svg {
-//   position: absolute;
-// height: 100%;
-// width: 100%;
-// left: 0;
-// top: 0;
+//  .dndupload-progressbars:first-child {
+//    border: 16px solid #f3f3f3; /* Light grey */
+//        border-top: 16px solid #3498db; /* Blue */
+//        border-radius: 50%;
+//        width: 120px;
+//        height: 120px;
+//        animation: spin 2s linear infinite;
+//  }
+//  @keyframes spin {
+//     0% { transform: rotate(0deg); }
+//     100% { transform: rotate(360deg); }
 // }
-
-
- // UPLOAD CONTENT SECTION //INTERACTION
-
- .dndupload-progressbars, .dndupload-uploadinprogress{
-   min-width: 20px;
-   min-height: 20px;
-   background-color: $wedgewood;
-   color:$white;
-}
- .dndupload-progressbars:first-child {
-   border: 16px solid #f3f3f3; /* Light grey */
-       border-top: 16px solid #3498db; /* Blue */
-       border-radius: 50%;
-       width: 120px;
-       height: 120px;
-       animation: spin 2s linear infinite;
- }
- @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-
-
-
-  /* HTW Print Styles */
-
-@page {
-  size: 7.267in 11.692in;
-  margin: 0.25in 0.22in 0.25in 0.22in;
-}
-  @media print {
-    #page-header:before {
-        margin-top: 20px;
-        font-family: 'Roboto', Helvetica, sans-serif;
-        font-size: 16px;
-        content: 'HTW Chur | Hochschule für Technik und Wirtschaft';
-        max-height: 10px;
-        margin-bottom: 0px !important;
-        padding-bottom: 0px !important;
-      }
-    header, #page-header{
-      page-break-after: avoid!important;
-    }
-
-  .chart-area{
-    page-break-inside: avoid!important;
-    page-break-before: avoid!important;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-  }
-
-  .chart-area {
-    position: relative!important;
-    page-break-inside: avoid!important;
-    canvas {
-      position: relative;
-      page-break-inside: avoid!important;
-      -ms-overflow-style: -ms-autohiding-scrollbar;
-    }
-  }
-.card, #page-enrol-users #filterform, .que .history, .userprofile .profile_tree section, .groupinfobox, .forumpost, .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax .yui-layout-unit-right, .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax .yui-layout-unit-bottom, .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax #chat-messages .chat-message.course-theme, .well{
-  background: none;
-}
-  aside #block-region-side-post, footer, .form-buttons, #dock, #page-navbar, #block-region-side-pre, #inst4, .navbar .navbar-inner, .logo, .nav-tabs a, aside#block-region-side-post, .fbbuttons{
-    display: none!important;
-    width: 0px!important;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-  }
-
-  #region-main{
-    max-width: 7in;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-  }
-  .chart-area, .chart-image, .analysis{
-      // max-width: 5in!important;
-      // height:6in!important;
-      position: relative;
-      page-break-inside: avoid!important;
-      -ms-overflow-style: -ms-autohiding-scrollbar;
-      canvas {
-        max-width: 5in!important;
-        max-height:3.3in!important;
-        position: relative;
-        page-break-inside: avoid!important;
-        -ms-overflow-style: -ms-autohiding-scrollbar;
-      }
-  }
-
-}

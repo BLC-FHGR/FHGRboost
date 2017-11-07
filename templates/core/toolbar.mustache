@@ -17,7 +17,7 @@
 {{!
     @template core/toolbar
 
-    Navbar template.
+    toolbar template.
 
     Classes required for JS:
     * none
@@ -30,69 +30,69 @@
 <!-- <div class="row"> -->
 
 {{#show_toolbar}}
-<div class="nav toolbar hidden-sm-down">
-<!-- <div class="card-block "> -->
+<div class="col-xs-12">
+  <div class="nav toolbar hidden-xs-down">
+  <!-- <div class="card-block "> -->
 
-  <nav id="anothernav" class="col-xs-12 p-a-1  {{#edit_state}}editing{{/edit_state}}">
-    {{!
-      spezielle Menu Struktur, die struktur infomrationen enthält, so dass
-      wir bestimmte unterpunkte ausblenden oder separat behandeln können.
-      die sem_action_menu struktur enthält ein Array "items".
-      ein Item hat die folgenden struktur
+    <nav id="anothernav" class="anothernav {{#edit_state}}editing{{/edit_state}}">
+      {{!
+        spezielle Menu Struktur, die struktur infomrationen enthält, so dass
+        wir bestimmte unterpunkte ausblenden oder separat behandeln können.
+        die sem_action_menu struktur enthält ein Array "items".
+        ein Item hat die folgenden struktur
 
-      {
-        "link" : "http://mdl-dev.htwchur.ch/enrol/users.php?id=58",
-        "display" : true,
-        "text" : "Eingeschriebene Nutzer/innen",
-        "key" : "review",
-        "parent_key": "courseadmin",
-        "pkcourseadmin": true,
-        "review": true
-        "icon" : {
-           "pix" : "i/enrolusers",
-           "attributes" : {
-              "class" : "navicon",
-              "alt" : ""
-           },
-           "component" : "moodle"
-        },
-        "users" : true    // <- das ist die übergeordnete menu kategorie
-     }
-    }}
-       {{#sem_header_menu}}
-            <div class="context_header_settings_menu">
-                {{#items}}
-                {{! das folgende Konstrukt blendet bestimmte toolbar elemente aus.
-                    Das würde fast flexibler mit css gehen.
-                  }}
-                {{^pkmanageinstances}} {{! Einschreibemethoden ausblenden}}
-                {{^gradebooksetup}}
-                {{^publish}}
-                {{^reset}}
-                {{^restore}}
-                {{^pkquestionbank}}
-                <div class="btn btn-secondary {{key}}" data-pk="{{parent_key}}">
-                    <a href="{{{link}}}">{{text}}</a>
-                </div>
-                {{/pkquestionbank}}
-                {{/restore}}
-                {{/reset}}
-                {{/publish}}
-                {{/gradebooksetup}}
-                {{/pkmanageinstances}}
-                {{/items}}
-            </div>
-       {{/sem_header_menu}}
+        {
+          "link" : "http://mdl-dev.htwchur.ch/enrol/users.php?id=58",
+          "display" : true,
+          "text" : "Eingeschriebene Nutzer/innen",
+          "key" : "review",
+          "parent_key": "courseadmin",
+          "pkcourseadmin": true,
+          "review": true
+          "icon" : {
+             "pix" : "i/enrolusers",
+             "attributes" : {
+                "class" : "navicon",
+                "alt" : ""
+             },
+             "component" : "moodle"
+          },
+          "users" : true    // <- das ist die übergeordnete menu kategorie
+       }
+      }}
+         {{#sem_header_menu}}
+              <div class="context_header_settings_menu">
+                  {{#items}}
+                  {{! das folgende Konstrukt blendet bestimmte toolbar elemente aus.
+                      Das würde fast flexibler mit css gehen.
+                    }}
+                  {{^pkmanageinstances}} {{! Einschreibemethoden ausblenden}}
+                  {{^gradebooksetup}}
+                  {{^publish}}
+                  {{^reset}}
+                  {{^restore}}
+                  {{^pkquestionbank}}
+                  <div class="btn btn-secondary {{key}}" data-pk="{{parent_key}}">
+                      <a href="{{{link}}}">{{text}}</a>
+                  </div>
+                  {{/pkquestionbank}}
+                  {{/restore}}
+                  {{/reset}}
+                  {{/publish}}
+                  {{/gradebooksetup}}
+                  {{/pkmanageinstances}}
+                  {{/items}}
+              </div>
+         {{/sem_header_menu}}
 
-       {{#edit_button}}
-           <div class="breadcrumb-button">
-             {{{edit_button}}}
-           </div>
-       {{/edit_button}}
-  </nav>
+         {{#edit_button}}
+             <div class="breadcrumb-button">
+               {{{edit_button}}}
+             </div>
+         {{/edit_button}}
+    </nav>
 
+  </div>
 </div>
 
-<!-- </div> -->
 {{/show_toolbar}}
-<!-- </div> -->

@@ -1,0 +1,90 @@
+//* HTW Print Styles */
+@page {
+  size: 7.267in 11.692in;
+  margin: .25in .22in;
+}
+@media print {
+  #page-header:before {
+    margin-top: 20px;
+    font-family: 'Roboto', Helvetica, sans-serif;
+    font-size: 16px;
+    content: 'HTW Chur | Hochschule für Technik und Wirtschaft';
+    max-height: 10px;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  #page-header,
+  header {
+    page-break-after: avoid!important;
+  }
+
+  .chart-area {
+    page-break-inside: avoid!important;
+    page-break-before: avoid!important;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+
+  .chart-area {
+    position: relative!important;
+    page-break-inside: avoid!important;
+
+    canvas {
+      position: relative;
+      page-break-inside: avoid!important;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+  }
+
+  #page-enrol-users #filterform,
+  .card,
+  .forumpost,
+  .groupinfobox,
+  .que .history,
+  .userprofile .profile_tree section,
+  .well,
+  .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax #chat-messages .chat-message.course-theme,
+  .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax .yui-layout-unit-bottom,
+  .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax .yui-layout-unit-right {
+    background: none;
+  }
+
+  #block-region-side-pre,
+  #dock,
+  #inst4,
+  #page-navbar,
+  .fbbuttons,
+  .form-buttons,
+  .logo,
+  .nav-tabs a,
+  .navbar .navbar-inner,
+  aside #block-region-side-post,
+  aside#block-region-side-post,
+  footer {
+    display: none!important;
+    width: 0px!important;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+
+  #region-main {
+    max-width: 7in;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+
+  .analysis,
+  .chart-area,
+  .chart-image {
+    position: relative;
+    page-break-inside: avoid!important;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+    canvas {
+      max-width: 5in!important;
+      max-height: 3.3in!important;
+      position: relative;
+      page-break-inside: avoid!important;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+  }
+}

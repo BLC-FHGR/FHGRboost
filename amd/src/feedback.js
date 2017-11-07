@@ -11,7 +11,10 @@ function initSVGRoot() {
                     // .attr("height", "100%")
                     // .attr("viewBox", "0 0 60 55")
                     // .attr("class", "fbanalysis-svg");
+                    console.log( "foo feedback.js ");
+
     }
+
     else {
         // clear the SVG area
         svgRoot.selectAll("*").remove();
@@ -52,16 +55,6 @@ function toggleLiveUpdate() {
 
     loader.toggleLiveUpdate();
 
-    // if ($("#fbanalysis_barchart").hasClass("btn-primary")) {
-    //     checkLiveUpdate(loadBarChart);
-    // }
-    // else
-    // if ($("#fbanalysis_bubblechart").hasClass("btn-primary")) {
-    //     checkLiveUpdate(loadBubbleChart);
-    // }
-    // else if ($("#fbanalysis_boxchart").hasClass("btn-primary")) {
-    //     checkLiveUpdate(loadBoxChart);
-    // }
 }
 
 function clearSelection(tname) {

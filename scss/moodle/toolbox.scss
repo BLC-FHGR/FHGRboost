@@ -1,0 +1,58 @@
+.toolbar {
+  background: $white;
+  box-shadow: $material-shadow1;
+  // max-width: 87%;
+  position: fixed;
+  top: 32px;
+  z-index: 2;
+
+  .btn {
+    color: $white;
+    font-size: 13px;
+    margin: 0 !important;
+    padding: .2em .6em;
+    height: 24px;
+  }
+
+  a {
+    color: $white;
+  }
+
+  button {
+    font-size: 11px;
+    margin: 0 !important;
+    padding: 0.2em 0.6em;
+    height: 24px;
+  }
+}
+
+.anothernav {
+    padding: .6rem !important;
+    display: inline-flex;
+    .form-control {
+      padding: .25rem .75rem;
+    }
+}
+
+.btn.btn-secondary.turneditingonoff {
+  background-color: $brandred!important;
+}
+
+.context_header_settings_menu {
+  display: flex;
+  flex-direction: row;
+
+  .turneditingonoff {
+    order: 1;
+  }
+
+  .btn {
+    margin: .25rem !important;
+    padding: .35em .6em;
+  }
+}
+
+.region_main_settings_menu {
+  z-index: 1;
+  background: $wedgewood;
+}

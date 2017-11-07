@@ -1,0 +1,20 @@
+.course-content .current::before {
+  border-left: $brandred 14px solid !important;
+}
+
+.topics .current {
+  background: $background-highlight;
+
+  .sectionname {
+    a {
+      color: $textgrey;
+      background: $background-highlight;
+    }
+  }
+}
+
+.sectionname a {
+  background: $sand;
+  color: $driftwood;
+  font-family: 'Roboto', sans-serif;
+}

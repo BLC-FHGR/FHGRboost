@@ -1,0 +1,179 @@
+//   /**    NAVIGATION TOP */
+
+.login {
+  color: $white;
+
+  a {
+    color: $white!important;
+    font-weight: 900;
+  }
+}
+
+.navbar-light {
+  background-color: $wedgewood;
+  border-bottom: 0 solid;
+
+  .navbar-nav .nav-link {
+    color: $white;
+  }
+
+  .navbar-brand {
+    background-color: $wedgewood;
+  }
+
+  a {
+    color: $white;
+
+    .dropdown-item {
+      color: $wedgewood;
+    }
+  }
+
+  .popover-region-container {
+    a {
+      color: $wedgewood;
+    }
+  }
+}
+
+.dropdown-menu {
+  color: $wedgewood;
+
+  .icon {
+    color: $wedgewood;
+  }
+
+  .dropdown-item {
+    color: $wedgewood;
+  }
+}
+
+.course-content .current::before {
+  border-left: $brandred 4px solid;
+  content: "";
+  position: absolute;
+}
+
+header {
+  padding: 0 !important;
+
+  .navbar {
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar-brand {
+    padding: 0;
+  }
+}
+
+.avatar {
+  img {
+    height: 16px;
+    width: 16px;
+  }
+}
+
+.navbar a {
+  margin-top: 4px;
+}
+
+.navbar .menubar {
+  margin-top: 6px;
+}
+
+.site-name {
+  margin-top: 2px;
+}
+//   /**    NAVIGATION LEFT */
+
+#nav-drawer {
+  background-color: $white;
+  box-shadow: $material-shadow1;
+  font-size: 1.2em;
+  font-weight: 300;
+}
+
+a.list-group-item {
+  i {
+    color: $wedgewood;
+  }
+
+  .list-group-item-action {
+    padding-left: 20px;
+  }
+
+  .font-weight-bold {
+    border-left: 10px solid $driftwood;
+    padding-left: 10px;
+  }
+
+  &:first-child,
+  &:last-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+.list-group-item {
+  background-color: $white;
+  border: 0;
+
+  .media {
+    font-size: 0.8em;
+  }
+}
+
+#nav-drawer::-webkit-scrollbar {
+  display: none;
+}
+// navigation drawer left //
+
+[data-region="drawer"] {
+  top: 36px;
+  height: calc(100% - 36px);
+}
+
+#nav-drawer .list-group {
+  border-bottom: 1px solid #ddd;
+}
+//* TODO REPLACE ALL COLORS FROM DEFAULT.SCSS IN BOOST THEME WITH HTW BRAND COLORS//
+
+.navbar-light .navbar-nav .nav-link:hover {
+  // color:$wedgewood-dark;
+  font-weight: 900;
+}
+
+#page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity200 .info.release,
+.assignfeedback_editpdf_widget .label,
+.tag-info {
+  background-color: $wedgewood-dark;
+}
+
+#accordion .nav-tabs {
+  margin-bottom: 10px;
+}
+
+.navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .active > .nav-link:focus,
+.navbar-light .navbar-nav .active > .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.active:focus,
+.navbar-light .navbar-nav .nav-link.active:hover,
+.navbar-light .navbar-nav .nav-link.open,
+.navbar-light .navbar-nav .nav-link.open:focus,
+.navbar-light .navbar-nav .nav-link.open:hover,
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .open > .nav-link,
+.navbar-light .navbar-nav .open > .nav-link:focus,
+.navbar-light .navbar-nav .open > .nav-link:hover {
+  color: #fff;
+}
+//Fix z-Index pagination navigatoin on dashboard: present past future courses (bottom page-navigation)
+
+.page-item.active .page-link,
+.page-item.active .page-link:focus,
+.page-item.active .page-link:hover {
+  z-index: 0;
+}
