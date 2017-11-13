@@ -51,20 +51,25 @@
    display: flex;
    align-items: center;
 }
-.media-body {
-  width: 66%;
-  // margin-top: 12px;
-  max-width: 100%;
-}
+// .media-body {
+//   width: 66%;
+//   // margin-top: 12px;
+//   max-width: 100%;
+// }
 
 .no-progress .ripple{
 
+}
+.block_myoverview {
+    .courses-view-course-item {
+        height: 120px;
+    }
 }
 
 @media (min-width: 1600px) {
     .block_myoverview {
         .courses-view-course-item {
-            height: 170px;
+            height: 120px;
         }
     }
 }
