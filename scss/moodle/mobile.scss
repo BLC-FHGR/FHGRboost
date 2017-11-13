@@ -2,16 +2,10 @@
   #page-header {
     margin-top: 0px;
   }
-  .toolbar{
-    margin-left: -42px;
-  padding-left: 12px;
-  }
 }
-
-
 @media (min-width:480px) {
   #page-header {
-    margin-top: 70px;
+    margin-top: 60px;
   }
 }
 @media (min-width:600px) {
@@ -58,15 +52,6 @@
 //
 // Small devices (landscape phones, less than 768px)
 @media (max-width: 767px) {
-  footer{
-    .first_footer{
-      .col-lg-3, .col-lg-4{
-        padding:5%;
-        text-align: center;
-      }
-    }
-
-  }
   //fix margins and paddings
   //should be less in order to see more on mobile
   //06.11.2017 hkum
@@ -95,23 +80,22 @@
   #page.container-fluid {
     padding: 1rem;
   }
-
   //fix cards on landing page : status is below title -
   //should be inline
   //06.11.2017 hkum
   // .block_myoverview .courses-view-course-item {
   //   height: 100px !important;
   // }
-  //
-  // .card.courses-view-course-item {
-  //   .hidden-sm-up.hidden-phone {
-  //     display: inline-flex;
-  //   }
-  //
-  //   .h5 {
-  //     padding: 1.2rem 0 0 1.2rem;
-  //   }
-  // }
+
+  .card.courses-view-course-item {
+    .hidden-sm-up.hidden-phone {
+      display: inline-flex;
+    }
+
+    .h5 {
+      padding: 1.2rem 0 0 1.2rem;
+    }
+  }
   //fix course view description : overflow not hidden / text outbound
   //should be within white box
   //06.11.2017 hkum
@@ -137,20 +121,20 @@
   //fix cards on landing page : status is below title -
   //should be inline
   //06.11.2017 hkum
-  // .block_myoverview .courses-view-course-item {
-  //   height: 160px;
-  //   overflow-y: hidden;
-  // }
-  //
-  // .card.courses-view-course-item {
-  //   .hidden-sm-up.hidden-phone {
-  //     display: inline-flex;
-  //   }
-  //
-  //   .h5 {
-  //     padding: 1.2rem 0 0 1.2rem;
-  //   }
-  // }
+  .block_myoverview .courses-view-course-item {
+    height: 160px;
+    overflow-y: hidden;
+  }
+
+  .card.courses-view-course-item {
+    .hidden-sm-up.hidden-phone {
+      display: inline-flex;
+    }
+
+    .h5 {
+      padding: 1.2rem 0 0 1.2rem;
+    }
+  }
   //toolbox is not responsive on smaller displays
   //buttons should be in a row
   //06.11.2017 hkum
