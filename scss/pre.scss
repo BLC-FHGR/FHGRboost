@@ -1,3 +1,4 @@
+
 // Pre SCSS for the theme
 //shadows
 $shadow06: rgba(0, 0, 0, .06);
@@ -24,6 +25,9 @@ $drawer-width: 285px;
 $card-bg: rgba(255, 255, 255, .18);
 $material-shadow1: 0 2px 2px 0 $shadow14, 0 1px 5px 0 $shadow12, 0 3px 1px -2px $shadow20;
 $material-shadow1-hover: 0 1px 1px 0 $shadow07, 0 1px 2px 0 $shadow06, 0 1px 0 -1px $shadow10;
+
+$material-shadow2: 0 1px 1px 0 $shadow10, 0 1px 2px 0 $shadow10, 0 1px 0 -1px $shadow10;
+
 
 $button-shadow:0 2px 2px 0 $shadow14, 0 1px 5px 0 $shadow14, 0 3px 1px -2px $shadow14;
 $button-shadow-hover:0 1px 1px 0 $shadow07, 0 1px 1px 0 $shadow06, 0 1px 1px -1px $shadow10;

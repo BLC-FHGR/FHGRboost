@@ -1,6 +1,6 @@
 .toolbar {
   background: $white;
-  box-shadow: $material-shadow1;
+  box-shadow: $material-shadow2;
   // max-width: 87%;
   position: fixed;
   top: 32px;
@@ -35,6 +35,7 @@
 }
 
 .btn.btn-secondary.turneditingonoff {
+  border-color: $brandred!important;
   background-color: $brandred!important;
 }
 
