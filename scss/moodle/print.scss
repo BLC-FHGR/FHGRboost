@@ -13,18 +13,24 @@
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
-
+.page-header-headings {
+  margin-left: 20px;
+}
   #page-header,
   header {
     page-break-after: avoid!important;
   }
-
+  .tick text {
+    font-size: 12px!important;
+  }
   .chart-area {
     page-break-inside: avoid!important;
     page-break-before: avoid!important;
     -ms-overflow-style: -ms-autohiding-scrollbar;
   }
-
+  #feedback_analysis {
+    max-height: 30%;
+  }
   .chart-area {
     position: relative!important;
     page-break-inside: avoid!important;
