@@ -2,22 +2,19 @@
 
 // /*    GENERAL */
 // Overwritten body attributes */
-@import 'moodle/print';
 @import 'moodle/breadcrumb';
 @import 'moodle/buttons';
 @import 'moodle/cards';
 @import 'moodle/course';
 @import 'moodle/feedback_analysis';
-@import 'moodle/footer';
 @import 'moodle/navigation';
 @import 'moodle/pageheader';
 @import 'moodle/print';
 @import 'moodle/quizzes';
 @import 'moodle/toolbox';
-@import 'moodle/print';
 @import 'moodle/mobile';
-
-// @import 'moodle/inputforms
+// @import 'moodle/buttons';
+// @import 'moodle/inputforms';
 
 body {
   background-color: $white;
@@ -48,22 +45,92 @@ a {
 .page-header-headings h1 {
   font-weight: 100;
 }
-//define look for file uploaded in a course (was cut off)
-.fp-iconview {
-  .fp-filename-field {
-    min-height: 50px;
-    overflow: hidden;
-    position: inherit;
-    word-wrap: break-word;
+
+
+//   /**    EDITOR ATTO */
+.editor_atto_toolbar {
+  i {
+    color: $wedgewood;
   }
-  .fp-file{
-    box-shadow: $material-shadow2;
-    padding: 8px;
-    background-color: #fff;
+
+  button {
+    padding: 0 9px !important;
+  }
+}
+//   /**    BUTTONS*/
+button {
+  border: 0;
+  border-radius: 2px;
+  color: $white;
+  cursor: pointer;
+  display: inline-block;
+  height: 36px;
+  letter-spacing: 0.5px;
+  line-height: 36px;
+  padding: 0 2rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.2s ease-out;
+}
+
+.btn-secondary {
+  background-color: $wedgewood;
+  border-color: $wedgewood;
+  box-shadow: none;
+  color: $white;
+
+  i {
+    color: $white;
   }
 }
 
+.btn-default,
+.btn-secondary {
+  background-color: $wedgewood;
+  border-color: $wedgewood;
+  color: $white;
+  border: 0;
+}
 
+.tab-pane {
+  .btn-default {
+    background: $wedgewood;
+  }
+
+  .btn-default.active {
+    background-color: $wedgewood-dark;
+    border: 0;
+    color: $white;
+  }
+}
+
+.btn-default:active,
+.btn-default:focus,
+.btn-default:hover,
+.btn-default:visited,
+.btn-secondary:hover {
+  background-color: $wedgewood-dark;
+  border-color: $wedgewood-dark;
+  box-shadow: $button-shadow-hover;
+  color: $white;
+}
+//   /**    FOOTER */
+footer.bg-inverse{
+  background-color: $wedgewood!important;
+      }
+footer{
+
+      font-size: 1.3rem;
+      color: $white!important;
+      font-weight: 100;
+  a {
+    color: $white!important;
+    font-weight: 100;
+    text-decoration: underline;
+
+  }
+}
 /* FIX THIS SHIT SOON */
 #page-grade-grading-manage .actions .btn-group > .action.active,
 #page-grade-grading-manage .actions .btn-group > .action:active,
@@ -102,7 +169,7 @@ button.close {
 }
 
 .dimmed_text {
-  color: #eee;
+  color: #bbb;
 }
 
 //  // UPLOAD CONTENT SECTION //INTERACTION
