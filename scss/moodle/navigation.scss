@@ -93,14 +93,7 @@ header {
   font-size: 1.2em;
   font-weight: 300;
 }
-a.list-group-item.font-weight-bold {
-    border-left: 4px solid $wedgewood;
-    // padding-left: 10px;
-    transition: all 100ms ease-in-out;
-    &:hover{
-      border-left: 4px solid $driftwood!important;
-    }
-  }
+
 a.list-group-item {
   i {
     color: $wedgewood;
@@ -110,6 +103,10 @@ a.list-group-item {
     padding-left: 20px;
   }
 
+  .font-weight-bold {
+    border-left: 10px solid $driftwood;
+    padding-left: 10px;
+  }
 
   &:first-child,
   &:last-child {
@@ -117,28 +114,6 @@ a.list-group-item {
     border-top-right-radius: 0;
   }
 }
-a.list-group-item-action{
-  border-left: 4px solid $white;
-  // padding-left: 10px;
-  transition: all 100ms ease-in-out;
-  &:hover{
-    border-left: 4px solid $driftwood!important;
-  }
-  &:focus{
-    border-left: 4px solid $driftwood!important;
-    background-color:$background-highlight;
-  }
-}
-  //
-  // transition: border-left 100ms ease-in;
-  // transition: background-color 350ms ease-in;
-  // border-left: 4px solid $white;
-  // &:hover, &:focus{
-  //   border-left: 4px solid $wedgewood-dark!important;
-  // }
-  // &:focus{
-  //   background-color:$background-highlight;
-  // }
 
 .list-group-item {
   background-color: $white;
@@ -166,7 +141,7 @@ a.list-group-item-action{
 
 .navbar-light .navbar-nav .nav-link:hover {
   // color:$wedgewood-dark;
-  text-decoration: underline;
+  font-weight: 900;
 }
 
 #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity200 .info.release,
