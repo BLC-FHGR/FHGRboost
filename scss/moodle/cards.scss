@@ -19,13 +19,13 @@
 
 .courses {
   .coursebox {
-    box-shadow: $material-shadow1;
+    box-shadow: $material-shadow1-hover;
     margin: 20px 0;
     padding: 20px 10px;
 
     &:hover {
       background-color: $sand;
-      box-shadow: $material-shadow1-hover;
+      box-shadow: $material-shadow1;
       cursor: pointer;
     }
   }
@@ -47,12 +47,39 @@
     -webkit-filter: grayscale(50%);
   }
 }
-/* CARDS ON DASBOARD */
-@media (min-width: 1600px) {
-  .block_myoverview .courses-view-course-item {
-    height: 100px !important;
-  }
+.v-center {
+   display: flex;
+   align-items: center;
 }
+// .media-body {
+//   width: 66%;
+//   // margin-top: 12px;
+//   max-width: 100%;
+// }
+
+.no-progress .ripple{
+
+}
+.block_myoverview {
+    .courses-view-course-item {
+        height: 120px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .block_myoverview {
+        .courses-view-course-item {
+            height: 120px;
+        }
+    }
+}
+
+// /* CARDS ON DASBOARD */
+// @media (min-width: 1600px) {
+//   .block_myoverview .courses-view-course-item {
+//     height: 100px !important;
+//   }
+// }
 //
 // .block_myoverview .courses-view-course-item {
 //   height: 200px;

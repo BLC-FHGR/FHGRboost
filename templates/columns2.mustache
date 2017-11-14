@@ -95,25 +95,81 @@
     </div>
     {{> theme_htwboost/nav-drawer }}
 </div>
-<footer id="page-footer" class="p-y-1 bg-inverse">
-    <div class="container">
-        <div id="course-footer">{{{ output.course_footer }}}</div>
-
+<footer id="page-footer" class="p-y-1">
+    <div class="container first_footer" id="firstFooter">
+      <div id="course-footer">{{{ output.course_footer }}}</div>
+      <div class="col-lg-4">
+        <h5 class="">Über Moodle</h5>
         {{# output.page_doc_link }}
             <p class="helplink">{{{ output.page_doc_link }}}</p>
         {{/ output.page_doc_link }}
 
         {{{ output.login_info }}}
         {{{ output.home_link }}}
-        <nav class="nav navbar-nav hidden-lg-up">
+      </div>
+        <nav class="nav navbar-nav hidden-lg-up col-lg-4">
+
             {{# output.custom_menu_flat }}
                 <ul class="list-unstyled p-t-1">
                     {{> theme_htwboost/custom_menu_footer }}
                 </ul>
             {{/ output.custom_menu_flat }}
         </nav>
-        {{{ output.standard_footer_html }}}
-        {{{ output.standard_end_of_body_html }}}
+        <div class="col-lg-4 hidden-sm-down">
+          <div class="footer_box" id="">
+            <div class="f" id="">
+              <h5 class="">Über die HTW Chur</h5>
+              <div class="">
+                <p class="bodytext"> Die <a href="ueber-uns/organisation/zahlen-und-fakten-organigramm.html" title="Opens internal link in current window" class="internal-link">Hochschule für Technik und Wirtschaft HTW Chur</a> bietet Bachelor- und Masterangebote, Weiterbildungen sowie angewandte Forschung und Dienstleistungen.</p>
+              </div>
+            </div>
+            <div class="" id="">
+              <div id="footer_social">
+                <div class="footer_social_block">
+                  <a href="https://www.snapchat.com/add/htwchur" target="_blank" class="btn btn-primary ripple"><i class="fa fa-snapchat-ghost" aria-hidden="true"></i></a>
+                  <a href="https://instagram.com/htw_chur" target="_blank" class="btn btn-primary ripple"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                  <a href="https://www.facebook.com/htwchur" target="_blank" class="btn btn-primary ripple"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                  <a href="https://www.twitter.com/htw_chur" target="_blank" class="btn btn-primary ripple"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                  <a href="https://www.youtube.com/htwchur1000" target="_blank" class="btn btn-primary ripple"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                </div>
+                <div class="footer_social_block">
+                  <a href="https://www.flickr.com/htwchur" target="_blank" class="btn btn-primary"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+                  <a href="https://plus.google.com/+HTWChur1000" target="_blank" class="btn btn-primary"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                  <a href="https://www.xing.com/companies/hochschulef%2525C3%25259Crtechnikundwirtschafthtwchur" target="_blank" class="btn btn-primary"><i class="fa fa-xing" aria-hidden="true"></i></a>
+                  <a href="https://www.linkedin.com/edu/school?id=372031" target="_blank" class="btn btn-primary"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                  <a href="" target="_blank" class="btn btn-primary ripple"><i class="fa fa-star" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 hidden-sm-down">
+              <a class="twitter-timeline" data-width="300" data-height="250" data-theme="light" data-link-color="#b39048" href="https://twitter.com/htwblc?ref_src=twsrc%5Etfw">Updates von htwblc</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+        <div class="container">
+
+                  {{{ output.standard_footer_html }}}
+                  {{{ output.standard_end_of_body_html }}}
+        </div>
+    </div>
+
+    <div class="container-fluid second_footer" id="secondFooter">
+      <div class="container">
+        <div class="col-lg-3">
+          <a href="http://www.swissuniversities.ch" target="_blank"><img src="http://www.htwchur.ch/fileadmin/images/logos/swissuni.png"></a>
+        </div>
+        <div class="col-lg-3">
+
+            <a href="http://www.fho.ch/" target="_blank">FHO Fachhochschule Ostschweiz</a>
+
+        </div>
+        <div class="col-lg-3">
+
+            <a href="http://www.graubuenden.ch" target="_blank"><img src="http://www.htwchur.ch/fileadmin/images/logos/graubuenden_2013_de.png"></a>
+
+        </div>
+      </div>
+
     </div>
 </footer>
 
@@ -127,5 +183,13 @@ require(['theme_boost/drawer'], function(mod) {
 require(['jquery'], function($) {
     $("#pc-for-in-progress>div").removeClass("hidden");
     $("#pb-for-in-progress").empty();
+
+    var quizzFooter = document.getElementById("page-mod-quiz-attempt");
+    console.log(quizzFooter);
+    if(quizzFooter != null){
+      $("#firstFooter").addClass("hidden");
+      $("#secondFooter").addClass("hidden");
+    }
 });
+
 {{/js}}
