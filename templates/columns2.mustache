@@ -96,7 +96,7 @@
     {{> theme_htwboost/nav-drawer }}
 </div>
 <footer id="page-footer" class="p-y-1">
-    <div class="container first_footer">
+    <div class="container first_footer" id="firstFooter">
       <div id="course-footer">{{{ output.course_footer }}}</div>
       <div class="col-lg-4">
         <h5 class="">Über Moodle</h5>
@@ -153,10 +153,10 @@
         </div>
     </div>
 
-    <div class="container-fluid second_footer">
+    <div class="container-fluid second_footer" id="secondFooter">
       <div class="container">
         <div class="col-lg-3">
-          <a href="http://www.swissuniversities.ch" target="_blank"><img src="http://www.htwchur.ch/fileadmin/images/logos/swissuni.png"></a>
+          <a href="http://www.swissuniversities.ch" target="_blank"><img src="/htw/pix/swissuni.png"></a>
         </div>
         <div class="col-lg-3">
 
@@ -165,7 +165,7 @@
         </div>
         <div class="col-lg-3">
 
-            <a href="http://www.graubuenden.ch" target="_blank"><img src="http://www.htwchur.ch/fileadmin/images/logos/graubuenden_2013_de.png"></a>
+            <a href="http://www.graubuenden.ch" target="_blank"><img src="/htw/pix/graubuenden_2013_de.png"></a>
 
         </div>
       </div>
@@ -180,9 +180,16 @@ require(['theme_boost/loader']);
 require(['theme_boost/drawer'], function(mod) {
     mod.init();
 });
-
 require(['jquery'], function($) {
     $("#pc-for-in-progress>div").removeClass("hidden");
     $("#pb-for-in-progress").empty();
+
+    var quizzFooter = document.getElementById("page-mod-quiz-attempt");
+    console.log(quizzFooter);
+    if(quizzFooter != null){
+      $("#firstFooter").addClass("hidden");
+      $("#secondFooter").addClass("hidden");
+    }
 });
+
 {{/js}}

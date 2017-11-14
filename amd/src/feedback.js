@@ -11,7 +11,7 @@ function initSVGRoot() {
                     // .attr("height", "100%")
                     // .attr("viewBox", "0 0 60 55")
                     // .attr("class", "fbanalysis-svg");
-                    console.log( "foo feedback.js ");
+                    
 
     }
 
