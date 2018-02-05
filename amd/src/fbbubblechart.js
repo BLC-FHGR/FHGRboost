@@ -4,7 +4,8 @@ define(["jquery", 'theme_htwboost/d3', "exports"], function($, d3, exports) {
     var xlab = [];
     var ylab = [];
     var xval = [];
-    var toppadding = 150;
+
+var toppadding = 150;
 
    function handleData(data) {
        if (data) {
@@ -15,7 +16,6 @@ define(["jquery", 'theme_htwboost/d3', "exports"], function($, d3, exports) {
            rmax = 0;
 
            data.map(function(question) {
-                var questiontitle = question.question.split(" ", 1);
                 if (type.indexOf(question.typ) >= 0) {
                     var tmpCounter = {};
                     xlab = question.answerValues.map(function (arr) {
@@ -26,37 +26,15 @@ define(["jquery", 'theme_htwboost/d3', "exports"], function($, d3, exports) {
                     question.answers.map(function(answer) {
                         tmpCounter[answer] += 1;
                     });
-                    //
-                    // ylab.push(question.label);
 
-                    if (question.label !== ""){
-                      ylab.push(question.label);
-                    }else{
-                      ylab.push(questiontitle);
-                    }
-
-
+                    ylab.push(question.label);
 
                     question.answerValues.map(function(arr) {
-                        // xval.push({
-                        //     y: question.label,
-                        //     x: arr[0],
-                        //     r: tmpCounter[arr[0]]
-                        // });
-                        if (question.label !== ""){
-                          xval.push({
-                              y: question.label,
-                              x: arr[0],
-                              r: tmpCounter[arr[0]]
-                          });
-                        }else{
-                          // var questiontitle = question.question.split(" ", 1);
-                          xval.push({
-                              y: questiontitle,
-                              x: arr[0],
-                              r: tmpCounter[arr[0]]
-                          });
-                        }
+                        xval.push({
+                            y: question.label,
+                            x: arr[0],
+                            r: tmpCounter[arr[0]]
+                        });
 
                         rmax = rmax > tmpCounter[arr[0]] ? rmax : tmpCounter[arr[0]];
                     });
@@ -68,6 +46,7 @@ define(["jquery", 'theme_htwboost/d3', "exports"], function($, d3, exports) {
     function setFraming(svg) {
         var yAxisBox = svg.node().getBBox();
         var chartHeight = yAxisBox.height + toppadding;
+
         $("#feedback_analysis").height(Math.floor(chartHeight));
     }
 
@@ -76,12 +55,11 @@ define(["jquery", 'theme_htwboost/d3', "exports"], function($, d3, exports) {
 
         svg.selectAll("*").remove();
 
-        var height = 30 * ylab.length;
-        var width =  $("#feedback_analysis").width()/2 - toppadding;
+        var height = 50 * ylab.length;
+        var width =  $("#feedback_analysis").width() - toppadding;
 
         var y = d3.scaleBand()
-                  .range([2, height*1.5]);
-
+                  .range([0, height]);
                  // .padding(0.1);
         var x = d3.scaleLinear()
                   .range([0, width]);
@@ -92,8 +70,9 @@ define(["jquery", 'theme_htwboost/d3', "exports"], function($, d3, exports) {
         y.domain(ylab);
         x.domain([d3.min(xlab) - 1, d3.max(xlab)]);
 
+        // add the bubble grid !!! caution: horrible code #FIXME (transform -250 is not what it should be)
         var gr = svg.append("g")
-                    .attr("transform", "translate(180,20)");
+                    .attr("transform", "translate(50,-250)");
 
         gr.selectAll(".circle")
           .data(xval)
@@ -101,7 +80,7 @@ define(["jquery", 'theme_htwboost/d3', "exports"], function($, d3, exports) {
           .append("circle")
           .attr("class", "fb-circle")
           .attr("cx", function(d) { return x(d.x); })
-          .attr("cy", function(d) { return y(d.y) + y.bandwidth(); })
+          .attr("cy", function(d) { return y(d.y) + y.bandwidth()/2; })
           .attr("r",  function(d) { return r(d.r); })
           .exit()
           .remove();
@@ -110,16 +89,12 @@ define(["jquery", 'theme_htwboost/d3', "exports"], function($, d3, exports) {
         gr.append("g")
             .attr("id", "x-axis")
             //.attr("transform", "translate(0,0)")
-            .call(d3.axisTop(x).ticks(xlab.length))
-            .style("font-size",12);
+            .call(d3.axisTop(x).ticks(xlab.length));
 
         // add the y Axis
         gr.append("g")
             .attr("id", "y-axis")
-            .call(d3.axisLeft(y))
-            .style("font-size",12);
-          // .selectAll(".tick text")
-          //   .call(wrap, y.rangeBand());
+            .call(d3.axisLeft(y));
 
         setFraming(svg);
     }
@@ -129,7 +104,6 @@ define(["jquery", 'theme_htwboost/d3', "exports"], function($, d3, exports) {
             renderChart(svg, data);
         };
     }
-
 
     exports.renderChart = chartFactory;
 });

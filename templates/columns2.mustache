@@ -49,7 +49,10 @@
     }
 }}
 {{{ output.doctype }}}
+
+
 <html {{{ output.htmlattributes }}}>
+
 <head>
     <title>{{{ output.page_title }}}</title>
     <link rel="shortcut icon" href="{{{ output.favicon }}}" />
@@ -144,7 +147,7 @@
           </div>
         </div>
         <div class="col-lg-4 hidden-sm-down">
-              <a class="twitter-timeline" data-width="300" data-height="250" data-theme="light" data-link-color="#b39048" href="https://twitter.com/htwblc?ref_src=twsrc%5Etfw">Updates von htwblc</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              <!-- <a class="twitter-timeline" data-width="300" data-height="250" data-theme="light" data-link-color="#b39048" href="https://twitter.com/htwblc?ref_src=twsrc%5Etfw">Updates von htwblc</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
         </div>
         <div class="container">
 
@@ -157,7 +160,6 @@
       <div class="container">
         <div class="col-lg-3">
           <a href="http://www.swissuniversities.ch" target="_blank"><img src="/htw/pix/swissuni.png"></a>
-
         </div>
         <div class="col-lg-3">
 
@@ -168,13 +170,16 @@
 
             <a href="http://www.graubuenden.ch" target="_blank"><img src="/htw/pix/graubuenden_2013_de.png"></a>
 
-
         </div>
       </div>
 
     </div>
 </footer>
-
+<!-- {{#js}}
+require(['theme_htwboost/helper'], function(hlp) {
+    hlp.loadHelperClasses();
+});
+{{/js}} -->
 </body>
 </html>
 {{#js}}
@@ -187,11 +192,10 @@ require(['jquery'], function($) {
     $("#pb-for-in-progress").empty();
 
     var quizzFooter = document.getElementById("page-mod-quiz-attempt");
-    console.log(quizzFooter);
+//    console.log(quizzFooter);
     if(quizzFooter != null){
       $("#firstFooter").addClass("hidden");
       $("#secondFooter").addClass("hidden");
     }
 });
-
 {{/js}}

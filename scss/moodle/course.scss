@@ -18,3 +18,19 @@
   color: $driftwood;
   font-family: 'Roboto', sans-serif;
 }
+/* hidden contents */
+
+.dimmed_text, .dimmed{
+  color: $textgrey-light !important;
+  font-style: italic;
+  opacity: 0.7;
+
+}
+// .section{
+//   background-color: white;
+// }
+// .yui3-dd-drop{
+//   .activity{
+//     background-color: $sand;
+//   }
+// }
