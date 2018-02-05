@@ -1,20 +1,21 @@
 #mod_quiz_navblock {
+  
   .card-block {
     background-color: $background-highlight;
   }
 }
-//
-// .qnbutton{
-//   color:#333
-// }
+
 #mod_quiz_navblock {
+
   .qn_buttons a{
     color:$wedgewood-dark;
   }
+
   .qnbutton.partiallycorrect .trafficlight {
     background-color: $brandred;
   }
 }
+
 .path-mod-quiz #mod_quiz_navblock .qnbutton .thispageholder {
   border-color: $wedgewood-dark;
 }
