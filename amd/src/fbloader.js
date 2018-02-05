@@ -3,10 +3,10 @@ define(["exports", "jquery", "theme_htwboost/jqurlparam"], function(exports, $) 
     var liveUpdate = false;
     var chartData = {};
     var liveHandler;
-
+    
     function checkLiveUpdate() {
         if (liveUpdate) {
-            exports.load(liveHandler);
+            setTimeout(function() {exports.load(liveHandler);}, 5000);
         }
     }
 
@@ -25,7 +25,6 @@ define(["exports", "jquery", "theme_htwboost/jqurlparam"], function(exports, $) 
 
     exports.data = function() {
         return chartData;
-        console.log("chartdata = " + chart.Data);
     }
 
     exports.load = function(handler) {

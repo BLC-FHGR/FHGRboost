@@ -8,8 +8,13 @@ function initSVGRoot() {
         svgRoot = d3.select("#feedback_analysis")
                     .append("svg")
                     .attr("width", "80%")
+                    // .attr("height", "100%")
+                    // .attr("viewBox", "0 0 60 55")
+                    // .attr("class", "fbanalysis-svg");
                     
+
     }
+
     else {
         // clear the SVG area
         svgRoot.selectAll("*").remove();
@@ -50,16 +55,6 @@ function toggleLiveUpdate() {
 
     loader.toggleLiveUpdate();
 
-    // if ($("#fbanalysis_barchart").hasClass("btn-primary")) {
-    //     checkLiveUpdate(loadBarChart);
-    // }
-    // else
-    // if ($("#fbanalysis_bubblechart").hasClass("btn-primary")) {
-    //     checkLiveUpdate(loadBubbleChart);
-    // }
-    // else if ($("#fbanalysis_boxchart").hasClass("btn-primary")) {
-    //     checkLiveUpdate(loadBoxChart);
-    // }
 }
 
 function clearSelection(tname) {
@@ -122,7 +117,7 @@ function extendUI() {
     $("#feedback_vizbuttons")
         .append("<span id=\"fbanalysis_barchart\" class=\"btn btn-outline-primary fbbutton\">Bar Chart</span>")
         .append("<span id=\"fbanalysis_bubblechart\" class=\"btn btn-outline-primary fbbutton\">Bubble Chart</span>")
-        // .append("<span id=\"fbanalysis_boxchart\" class=\"btn btn-outline-primary fbbutton\">Box Chart</span>")
+        .append("<span id=\"fbanalysis_boxchart\" class=\"btn btn-outline-primary fbbutton\">Box Chart</span>")
         // The live update should be deactivated in no chart is visible.
         .append("<span id=\"fbanalysis_liveupdate\" class=\"btn btn-outline-warning fbbutton\">Live Update (beta)</span>")
         .append("<span id=\"fbanalysis_print\" class=\"btn btn-secondary printbtn\">Print Page</span>");
