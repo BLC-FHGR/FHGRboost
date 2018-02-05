@@ -3,6 +3,7 @@
 // /*    GENERAL */
 // Overwritten body attributes */
 @import 'moodle/print';
+@import 'moodle/alerts';
 @import 'moodle/breadcrumb';
 @import 'moodle/buttons';
 @import 'moodle/cards';
@@ -101,9 +102,6 @@ button.close {
   margin-top: -6px;
 }
 
-.dimmed_text {
-  color: #eee;
-}
 
 //  // UPLOAD CONTENT SECTION //INTERACTION
 //

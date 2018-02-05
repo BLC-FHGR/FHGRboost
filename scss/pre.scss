@@ -8,14 +8,28 @@ $shadow12:rgba(0, 0, 0, .12);
 $shadow14: rgba(0, 0, 0, .14);
 $shadow20:rgba(0, 0, 0, .2);
 
-//theme colors
+//Boostcolors
+$gray-dark:                 #373a3c !default;
+$gray:                      #55595c !default;
+$gray-light:                #818a91 !default;
+$gray-lighter:              #eceeef !default;
+$gray-lightest:             #f7f7f9 !default;
 
+$brand-primary:             #4b92a4 !default;
+$brand-success:             #c86e6f !default;
+$brand-warning:             #c86e6f !default;
+$brand-danger:              #c86e6f !default;
+$brand-inverse:             $gray-dark !default;
+$navbar-height:             50px !default;
+
+//theme colors
 $wedgewood: #4b92a4; //blau
 $wedgewood-dark:#428393; //blau dunkler
 $iceblue:#f0f0ff;
 $driftwood: #b39048; //ocker
 $sand: #f4f4f0; //grau
 $textgrey:#666; //textgrau
+$textgrey-light:#aaa; //textgrau hell
 $white:#fff; //weiss
 $brandred: #c86e6f;
 $background-highlight: #f4eee4;
