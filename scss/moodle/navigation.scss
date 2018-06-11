@@ -8,7 +8,9 @@
     font-weight: 900;
   }
 }
-
+.navbar-nav {
+font-size: 14px!important;
+}
 .navbar-light {
   background-color: $wedgewood;
   border-bottom: 0 solid;
@@ -201,4 +203,13 @@ a.list-group-item-action{
 .page-item.active .page-link:focus,
 .page-item.active .page-link:hover {
   z-index: 0;
+}
+
+
+/*13.03.2018 */
+/*navigation: font-sizes */
+/* fixed sizes because they should mostly fit in one linear */
+
+nav .list-group-item .media-body{
+  font-size: 14px;
 }

@@ -18,6 +18,7 @@
 @import 'moodle/print';
 @import 'moodle/mobile';
 
+
 // @import 'moodle/inputforms
 
 body {
@@ -26,7 +27,9 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: normal;
 }
-
+html{
+    font-size:16px;
+  }
 h1,
 h2,
 h3,
@@ -39,7 +42,7 @@ h6 {
 p {
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 a {
@@ -93,15 +96,25 @@ a {
   z-index: 0;
 }
 
-.courses .coursebox {
-  background-color: $white;
-}
+
 
 .moodle-dialogue-base button.closebutton,
 button.close {
   margin-top: -6px;
 }
 
+.card,
+#page-enrol-users #filterform,
+.que .history,
+.userprofile .profile_tree section,
+.groupinfobox,
+.forumpost,
+.yui-skin-sam .yui-layout.path-mod-chat-gui_ajax .yui-layout-unit-right,
+.yui-skin-sam .yui-layout.path-mod-chat-gui_ajax .yui-layout-unit-bottom,
+.yui-skin-sam .yui-layout.path-mod-chat-gui_ajax #chat-messages .chat-message.course-theme,
+.well {
+  background: #f4f4f5;
+}
 
 //  // UPLOAD CONTENT SECTION //INTERACTION
 //

@@ -1,7 +1,9 @@
 //   /**    CARDS AND BLOCKS */
 
 .card {
-  background: adjust-color($sand, $blue: 5);
+  background: #F8F8F8;
+  // background: adjust-color($sand, $blue: 1);
+  // background: #fff!important;
   border: 0;
 
   .courses-view-course-item {
@@ -19,13 +21,14 @@
 
 .courses {
   .coursebox {
-    box-shadow: $material-shadow1-hover;
-    margin: 20px 0;
-    padding: 20px 10px;
+    background-color: $card-bg !important;
+    // box-shadow: $material-shadow1;
+    margin: 10px 0;
+    padding: 10px 5px;
 
     &:hover {
-      background-color: $sand;
-      box-shadow: $material-shadow1;
+      background-color: darken(white, .2);
+      box-shadow: $material-shadow1-hover;
       cursor: pointer;
     }
   }
@@ -39,31 +42,21 @@
   }
 }
 
-.activity {
-  background-color: $white;
 
-  img.activityicon {
-    filter: grayscale(50%);
-    -webkit-filter: grayscale(50%);
-  }
-}
 .v-center {
    display: flex;
    align-items: center;
 }
-// .media-body {
-//   width: 66%;
-//   // margin-top: 12px;
-//   max-width: 100%;
-// }
 
-.no-progress .ripple{
-
-}
 .block_myoverview {
     .courses-view-course-item {
         height: 120px;
     }
+}
+.category {
+      background: rgba(255,255,255,.5);
+      margin: 4px 0;
+      padding: 10px 0;
 }
 
 @media (min-width: 1600px) {
@@ -73,15 +66,16 @@
         }
     }
 }
-
+.card-block.course-info-container {
+    background-color: #fff;
+}
 // /* CARDS ON DASBOARD */
-// @media (min-width: 1600px) {
-//   .block_myoverview .courses-view-course-item {
-//     height: 100px !important;
-//   }
-// }
-//
-// .block_myoverview .courses-view-course-item {
-//   height: 200px;
-//   overflow-y: hidden;
-// }
+
+ @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+   /* IE10+ CSS styles go here */
+    .card-block {
+      .media-left, .media-right, .media-body {
+          display: table;
+      }
+    }
+ }

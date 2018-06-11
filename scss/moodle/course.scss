@@ -26,11 +26,41 @@
   opacity: 0.7;
 
 }
-// .section{
-//   background-color: white;
-// }
-// .yui3-dd-drop{
-//   .activity{
-//     background-color: $sand;
-//   }
-// }
+.courses .coursebox {
+  background-color: $white;
+}
+
+.section .activity.modtype_label.label {
+    font-weight: normal;
+    padding: .2em;
+}
+
+.activity {
+  background-color: $card-bg !important;
+
+
+  img.activityicon {
+    filter: grayscale(50%);
+    -webkit-filter: grayscale(50%);
+  }
+}
+
+.section .activity.modtype_label.label {
+  padding: 2.2em;
+}
+
+.ics-search {
+  display: flex;
+  .form-control {
+    margin-right:10px;
+    width: 50%;
+  }
+  .btn-secondary {
+    margin-top: 0px;
+  }
+}
+
+h3.sectionname {
+    font-weight: 400;
+    font-size: 34px;
+}
