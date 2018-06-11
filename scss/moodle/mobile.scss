@@ -3,7 +3,7 @@
     margin-top: 0px;
   }
   .toolbar{
-    margin-left: -42px;
+  margin-left: -52px;
   padding-left: 12px;
   }
 }
@@ -13,6 +13,7 @@
   #page-header {
     margin-top: 70px;
   }
+
 }
 @media (min-width:600px) {
   /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
@@ -43,6 +44,69 @@
   .course-content ul.section {
     margin: 0;
   }
+  //***************************************************
+  //
+  //*fixes mobile paddings and margins 13.03.2018*/
+  .mod-indent-outer {
+      margin: 0;
+      padding: 0;
+  }
+
+  ul.section.img-text {
+      margin: 0;
+      padding: 0;
+  }
+
+  .right.side, .left.side {
+      margin: 0;
+      padding: 0;
+      width: 0;
+  }
+
+  .card.card-block {
+      padding: 0;
+      margin: 0;
+  }
+
+  .mod-indent-outer {
+      margin: 0;
+      padding-left: 0;
+      padding: 0;
+  }
+
+  .section .label .mod-indent-outer {
+      padding: 0;
+  }
+
+  .section .label .contentwithoutlink, .section .label .activityinstance {
+      padding-right: 0;
+  }
+
+  .editor-indent {
+      margin-left: 0;
+      padding-left: 0;
+  }
+
+  .editor-indent {
+      margin-left: 0!important;
+  }
+
+  .col-lg-6 {
+      display: inline-block;
+  }
+
+  .section .activity.modtype_label.label {
+      padding: 1.2em;
+  }
+  .section li.activity {
+      padding: 1.2em;
+      margin: 4px 0px 4px 0;
+  }
+
+  .sectionname {
+      font-size: 1.25rem;
+      margin-left: 4px;
+  }
 
   #page-enrol-users #filterform,
   .card-block,
@@ -53,7 +117,12 @@
   .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax .yui-layout-unit-right {
     padding: 0;
   }
+  .course-content ul.topics li.section .content, .course-content ul.weeks li.section .content {
+      margin: 5px;
+      padding: 0;
+  }
 }
+
 //***************************************************
 //
 // Small devices (landscape phones, less than 768px)
@@ -65,8 +134,8 @@
         text-align: center;
       }
     }
-
   }
+
   //fix margins and paddings
   //should be less in order to see more on mobile
   //06.11.2017 hkum

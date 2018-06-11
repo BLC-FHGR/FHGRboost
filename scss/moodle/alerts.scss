@@ -1,5 +1,6 @@
 /* alert & highlight about hidden text */
 .ishidden {
+
     .tag-info {
       background-color: $brandred;
       border-radius: 3px;
@@ -29,4 +30,11 @@
       padding-right: 4px;
     }
   }
+}
+
+.text-success,
+.green,
+.notifysuccess,
+.connected {
+  color:#81C784!important
 }

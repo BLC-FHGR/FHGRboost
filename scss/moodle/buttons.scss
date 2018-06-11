@@ -1,24 +1,47 @@
-//   /**    BUTTONS*/
+//   /**    BUTTON Stylesheet for HTW Boost Theme */
+
+// Global Activity: Button Colors
+// brand colors for all Buttons
+// Date: ? Autor HKUM
+
 button {
-  border: 0;
-  border-radius: 2px;
-  color: $white;
-  cursor: pointer;
-  // display: inline-block;
-  // height: 36px;
-  // letter-spacing: none;
-  // line-height: 36px;
-  // padding: 0 2rem;
-  text-align: center;
-  text-decoration: none;
-  text-transform: none;
-  transition: 0.2s ease-out;
+  @extend .btn;
+  @extend .btn-primary;
+  margin-top:4px;
+  &:hover,
+  &:focus,
+  &:active,
+  &:visited {
+  background-color: darken($wedgewood, 10%);
+  border-color: darken($wedgewood, 10%);
+  color: white;
+  }
 }
+
+.buttons {
+  input {
+    @extend button;
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
+      @extend button:hover;
+    }
+  }
+}
+
+.btn {
+  i{
+    color: white;
+  }
+}
+
 .btn-default {
   background-color: $wedgewood;
   border-color: $wedgewood;
   box-shadow: none;
   color: $white;
+  margin-top:4px;
 
   i {
     color: $white;
@@ -35,7 +58,7 @@ button {
 
 .btn-primary {
   color: $white;
-
+  margin-top:4px;
   &:focus,
   &:hover,
   &:active,
@@ -47,10 +70,11 @@ button {
 }
 
 .btn-secondary {
-  background-color: $wedgewood;
+  background-color: $wedgewood-dark;
   border-color: $wedgewood;
   box-shadow: none;
   color: $white;
+  margin-top:4px;
 
   i {
     color: $white;
@@ -74,6 +98,50 @@ button {
     background-color: darken($wedgewood, 10%);
     color: transparentize($white, 50%);
   }
+
+  .btn-secondary:focus,
+  .btn-default:focus,
+  .btn-secondary:hover,
+  .btn-default:hover,
+  .btn-secondary:active,
+  .btn-default:active,
+  .btn-secondary:visited,
+  .btn-default:visited {
+    color: white !important;
+  }
+
+
+}
+
+.btn-secondary.text-primary {
+  color: #fff!important;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+  &:focus,
+  &:hover,
+  &:active,
+  &:visited {
+    color: #fff;
+    background-color: #218838;
+    border-color: #1e7e34;
+  }
+}
+.btn-warning {
+  color: #212529;
+  background-color: #ffc107;
+  border-color: #ffc107;
+  &:focus,
+  &:hover,
+  &:active,
+  &:visited {
+    color: #212529;
+    background-color: #e0a800;
+    border-color: #d39e00;
+  }
 }
 
 .btn-light {
@@ -81,7 +149,10 @@ button {
     background-color: #f8f9fa;
     border-color: #f8f9fa;
 
-    &:hover{
+    &:focus,
+    &:hover,
+    &:active,
+    &:visited {
     color: #212529;
     background-color: #e2e6ea;
     border-color: #dae0e5;
@@ -89,7 +160,6 @@ button {
 }
 
 .tab-pane {
-
   .btn-default {
     background: $wedgewood;
 
@@ -109,17 +179,19 @@ button {
   }
 }
 
+// Global Activity: Atto Editor
+// brand color for atto-icons
+// Date: ? Autor HKUM
 
-//   /**    EDITOR ATTO */
 .editor_atto_toolbar {
   i {
     color: $wedgewood;
   }
-
-  button {
-    padding: 0 9px !important;
-  }
 }
+
+// Global Activity: Loading Bar
+// Ripple Effect for loading bars
+// Date: ? Autor HKUM
 
 .ripple {
   position: relative;
@@ -150,8 +222,9 @@ button {
   transition: 0s;
 }
 
-
+// Quizz Attempt Section:
 //button classes should be given to certain kind of links: fixes issue #63 #70 on github/BLC-HTWChur/htwboost
+// Date: ? Autor HKUM
 
 .endtestlink,
 .backlink {
@@ -160,4 +233,58 @@ button {
   a{
     color: white;
   }
+}
+
+.detail-pair {
+  // @extend .pull-right;
+  input {
+    // @extend .col-lg-2;
+  }
+}
+// Quizz Edit Section:
+// FIX: Links in Test-Edit Mode should be Buttons
+// Date: 28.02.2018 Author: HKUM
+
+.mod-quiz-edit-content {
+    .selectmultiplecommandbuttons .separator{
+      display: none;
+    }
+}
+
+.mod-quiz-edit-content .btn-group a[role=button] {
+  @extend .btn;
+  @extend .btn-primary;
+  background-color: $driftwood;
+  border-color: $driftwood;
+  &:first-child {
+    border-right: 2px solid darken($driftwood, 1.8);
+  }
+  &:hover, &:active, &:focus, &:visited {
+    background-color: darken($driftwood, 10%);
+    border-color: darken($driftwood, 10%);
+  }
+  &:active:focus {
+    background-color: darken($driftwood, 30%);
+    border-color: darken($driftwood, 30%);
+  }
+}
+
+#page-mod-quiz-edit #questionselectall {
+  padding-right: 10px;
+}
+
+#page-mod-quiz-edit #questiondeselectall {
+  padding-left: 10px;
+}
+
+#page-mod-quiz-edit .selectmultiplecommandbuttons {
+  margin: 0 0 4px 4px;
+}
+
+// global: Edit Activities Gear Icon
+// FIX: settings gear icon has defect (white) Background
+// Date: 28.02.2018 Author: HKUM
+
+.region_main_settings_menu_proxy {
+  background-color: transparent;
 }
