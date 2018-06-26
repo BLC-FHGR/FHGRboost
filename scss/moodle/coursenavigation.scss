@@ -1,0 +1,37 @@
+[data-region="drawer"]{
+  padding: 20px 10px;
+  background-color: $sand;
+}
+
+
+
+nav.list-group .list-group-item {
+   font-size:.8375rem;
+
+   &.active {
+       background-color: $wedgewood;
+       border-color: $wedgewood-dark;
+
+       .icon {
+         color: #fff;
+       }
+   }
+
+   .icon {
+     color: $wedgewood;
+   }
+
+   /* fix hkum 11.06.2018: no linebreaks in left menu */
+   .media-body {
+     word-break: break-all;
+   }
+   //  /* 11.06.2018 hkum: sub-leveled elements smaller font size */
+   //
+   // &[data-nodetype="1"]{
+   //
+   //     .media-body {
+   //     font-size:.7375rem;
+   //     }
+   //
+   // }
+}

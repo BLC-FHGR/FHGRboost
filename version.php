@@ -17,8 +17,8 @@
 /**
  * htwboost backgrounds.
  *
- * @package    theme_htwboosts
- * @copyright  2016 Damyon Wiese
+ * @package    theme_htwboost
+ * @copyright  2016 Damyon Wiese, 2018 Hanna Kummel
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -26,7 +26,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 // This is the version of the plugin.
-$plugin->version = 2018061100;
+$plugin->version = 2018062600;
 
 // This is the version of Moodle this plugin requires.
 $plugin->requires = 2016112900.00;
@@ -44,4 +44,4 @@ $plugin->dependencies = [
 $plugin->maturity = MATURITY_STABLE;
 
 // This is the named version.
-$plugin->release = 1.4;
+$plugin->release = 2.0;
