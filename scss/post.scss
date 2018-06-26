@@ -1,138 +1,41 @@
 // Post SCSS for the theme.
 
-// /*    GENERAL */
-// Overwritten body attributes */
-@import 'moodle/print';
-@import 'moodle/alerts';
-@import 'moodle/breadcrumb';
+/*    GENERAL */
+/* Overwritten body attributes */
 @import 'moodle/buttons';
-@import 'moodle/cards';
-@import 'moodle/course';
-@import 'moodle/feedback_analysis';
+@import 'moodle/coursenavigation';
+@import 'moodle/dashboard';
 @import 'moodle/footer';
-@import 'moodle/navigation';
-@import 'moodle/pageheader';
-@import 'moodle/print';
-@import 'moodle/quizzes';
-@import 'moodle/toolbox';
-@import 'moodle/print';
 @import 'moodle/mobile';
-
-
-// @import 'moodle/inputforms
+@import 'moodle/print';
+@import 'moodle/quizz';
 
 body {
-  background-color: $white;
-  color: $textgrey;
+
   font-family: 'Roboto', sans-serif;
   font-weight: normal;
 }
-html{
-    font-size:16px;
-  }
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  color: $wedgewood;
+  color: #000;
+  font-weight: 500;
 }
 
 p {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
-  font-weight: 400;
+
 }
 
 a {
-  color: $driftwood;
-}
+  color: $wedgewood;
 
-.page-header-headings h1 {
-  font-weight: 100;
-}
-//define look for file uploaded in a course (was cut off)
-.fp-iconview {
-  .fp-filename-field {
-    min-height: 50px;
-    overflow: hidden;
-    position: inherit;
-    word-wrap: break-word;
-  }
-  .fp-file{
-    box-shadow: $material-shadow2;
-    padding: 8px;
-    background-color: #fff;
+  &:hover {
+    color: $wedgewood-dark;
   }
 }
-
-
-/* FIX THIS SHIT SOON */
-#page-grade-grading-manage .actions .btn-group > .action.active,
-#page-grade-grading-manage .actions .btn-group > .action:active,
-#page-grade-grading-manage .actions .btn-group > .action:focus,
-#page-grade-grading-manage .actions .btn-group-vertical > .action.active,
-#page-grade-grading-manage .actions .btn-group-vertical > .action:active,
-#page-grade-grading-manage .actions .btn-group-vertical > .action:focus,
-#rubric-rubric.gradingform_rubric #rubric-criteria .criterion .addlevel .btn-group > input.active,
-#rubric-rubric.gradingform_rubric #rubric-criteria .criterion .addlevel .btn-group > input:active,
-#rubric-rubric.gradingform_rubric #rubric-criteria .criterion .addlevel .btn-group > input:focus,
-#rubric-rubric.gradingform_rubric #rubric-criteria .criterion .addlevel .btn-group-vertical > input.active,
-#rubric-rubric.gradingform_rubric #rubric-criteria .criterion .addlevel .btn-group-vertical > input:active,
-#rubric-rubric.gradingform_rubric #rubric-criteria .criterion .addlevel .btn-group-vertical > input:focus,
-#rubric-rubric.gradingform_rubric .btn-group > .addcriterion.active,
-#rubric-rubric.gradingform_rubric .btn-group > .addcriterion:active,
-#rubric-rubric.gradingform_rubric .btn-group > .addcriterion:focus,
-#rubric-rubric.gradingform_rubric .btn-group-vertical > .addcriterion.active,
-#rubric-rubric.gradingform_rubric .btn-group-vertical > .addcriterion:active,
-#rubric-rubric.gradingform_rubric .btn-group-vertical > .addcriterion:focus,
-.btn-group > .btn.active,
-.btn-group > .btn:active,
-.btn-group > .btn:focus,
-.btn-group-vertical > .btn.active,
-.btn-group-vertical > .btn:active,
-.btn-group-vertical > .btn:focus {
-  z-index: 0;
-}
-
-
-
-.moodle-dialogue-base button.closebutton,
-button.close {
-  margin-top: -6px;
-}
-
-.card,
-#page-enrol-users #filterform,
-.que .history,
-.userprofile .profile_tree section,
-.groupinfobox,
-.forumpost,
-.yui-skin-sam .yui-layout.path-mod-chat-gui_ajax .yui-layout-unit-right,
-.yui-skin-sam .yui-layout.path-mod-chat-gui_ajax .yui-layout-unit-bottom,
-.yui-skin-sam .yui-layout.path-mod-chat-gui_ajax #chat-messages .chat-message.course-theme,
-.well {
-  background: #f4f4f5;
-}
-
-//  // UPLOAD CONTENT SECTION //INTERACTION
-//
-//  .dndupload-progressbars, .dndupload-uploadinprogress{
-//    min-width: 20px;
-//    min-height: 20px;
-//    background-color: $wedgewood;
-//    color:$white;
-// }
-//  .dndupload-progressbars:first-child {
-//    border: 16px solid #f3f3f3; /* Light grey */
-//        border-top: 16px solid #3498db; /* Blue */
-//        border-radius: 50%;
-//        width: 120px;
-//        height: 120px;
-//        animation: spin 2s linear infinite;
-//  }
-//  @keyframes spin {
-//     0% { transform: rotate(0deg); }
-//     100% { transform: rotate(360deg); }
-// }

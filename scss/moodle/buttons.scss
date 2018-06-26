@@ -59,18 +59,20 @@ button {
 .btn-primary {
   color: $white;
   margin-top:4px;
+  background-color: $wedgewood-dark;
+  border-color: $wedgewood-dark;
   &:focus,
   &:hover,
   &:active,
   &:visited{
-    background-color: darken($wedgewood, 10%);
-    border-color: darken($wedgewood, 10%);
+    background-color: darken($wedgewood-dark, 15%);
+    border-color: darken($wedgewood-dark, 15%);
     color: $white;
   }
 }
 
 .btn-secondary {
-  background-color: $wedgewood-dark;
+  background-color: $wedgewood;
   border-color: $wedgewood;
   box-shadow: none;
   color: $white;
@@ -119,43 +121,43 @@ button {
 
 .btn-success {
   color: #fff;
-  background-color: #28a745;
-  border-color: #28a745;
+  background-color: $brandred;
+  border-color: $brandred;
   &:focus,
   &:hover,
   &:active,
   &:visited {
     color: #fff;
-    background-color: #218838;
-    border-color: #1e7e34;
+    background-color: darken($brandred, 10%);
+    border-color: darken($brandred, 20%);
   }
 }
 .btn-warning {
-  color: #212529;
-  background-color: #ffc107;
-  border-color: #ffc107;
+  color: #fff;
+  background-color: $brandred;
+  border-color: $brandred;
   &:focus,
   &:hover,
   &:active,
   &:visited {
-    color: #212529;
-    background-color: #e0a800;
-    border-color: #d39e00;
+    color: #fff;
+    background-color: darken($brandred, 10%);
+    border-color: darken($brandred, 20%);
   }
 }
 
 .btn-light {
-    color: #212529;
-    background-color: #f8f9fa;
-    border-color: #f8f9fa;
+    color: $wedgewood;
+    background-color: white;
+    border-color: $wedgewood;
 
     &:focus,
     &:hover,
     &:active,
     &:visited {
-    color: #212529;
-    background-color: #e2e6ea;
-    border-color: #dae0e5;
+    color: $wedgewood-dark;
+    background-color: #fafafa;
+    border-color: $wedgewood-dark;
     }
 }
 
@@ -166,7 +168,7 @@ button {
     &:focus,
     &:hover,
     &:active,
-    &:visited{
+    &:visited {
       background-color: darken($wedgewood, 10%);
       border-color: darken($wedgewood, 10%);
       color: $white;
@@ -244,7 +246,7 @@ button {
 // Quizz Edit Section:
 // FIX: Links in Test-Edit Mode should be Buttons
 // Date: 28.02.2018 Author: HKUM
-
+//
 .mod-quiz-edit-content {
     .selectmultiplecommandbuttons .separator{
       display: none;
@@ -287,4 +289,17 @@ button {
 
 .region_main_settings_menu_proxy {
   background-color: transparent;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  background-color: $wedgewood;
+  &:focus,
+  &:hover,
+  &:active,
+  &:visited {
+    background-color: $wedgewood-dark;
+  }
+}
+.tag-info, #page-admin-index .adminwarning.availableupdatesinfo .moodleupdateinfo.maturity200 .info.release, .assignfeedback_editpdf_widget .label {
+  background-color: $driftwood;
 }

@@ -17,8 +17,8 @@
 /**
  * htwboost backgrounds callbacks.
  *
- * @package    theme_htwboosts
- * @copyright  2017 Hanna Kummel
+ * @package    theme_htwboost
+ * @copyright  2018 Hanna Kummel
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
