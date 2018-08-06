@@ -3,8 +3,6 @@
   background-color: $sand;
 }
 
-
-
 nav.list-group .list-group-item {
    font-size:.8375rem;
 
@@ -34,4 +32,32 @@ nav.list-group .list-group-item {
    //     }
    //
    // }
+
+   // 06.08.2018 adjust auto font resizing landingpage - hkum
+
+
+}
+#nav-drawer {
+  a.list-group-item-action {
+      border-left: 4px solid #fff!important;
+  }
+  a.list-group-item-action.active {
+      border-left: 4px solid $wedgewood-dark !important;
+  }
+  a.list-group-item-action:hover {
+      border-left: 4px solid #b39048!important;
+  }
+}
+.landingpage {
+  h1, h2, h3, h4, h5, h6, p, a, span {
+    -ms-word-break: break-all;
+ word-break: break-all;
+
+ /* Non standard for WebKit */
+ word-break: break-word;
+
+-webkit-hyphens: auto;
+-moz-hyphens: auto;
+    hyphens: auto;
+  }
 }
