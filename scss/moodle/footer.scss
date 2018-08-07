@@ -21,4 +21,25 @@ footer {
   h1, h2, h3, h4, h5, h6 {
     color: $white !important;
   }
+  .footer_social_block {
+    a.btn {
+      min-width: 44px;
+    }
+    a {
+      background-color: $driftwood;
+      border-color: $driftwood;
+      &:hover,
+      &:focus,
+      &:active {
+      background-color: darken($driftwood, 10%);
+      border-color: darken($driftwood, 10%);
+      color: white;
+      }
+      &:visited {
+      background-color: darken($driftwood, 2%);
+      border-color: darken($driftwood, 2%);
+      color: white;
+      }
+    }
+  }
 }
