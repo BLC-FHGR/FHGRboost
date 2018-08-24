@@ -1,46 +1,59 @@
 //* HTW Print Styles */
 @page {
-  size: 7.267in 11.692in;
-  margin: .55in .22in;
+  // size: 9.267in 11.692in;
+  // margin: .55in .22in;
 }
 @media print {
   #page-header:before {
-    margin-top: 20px;
+    // margin-top: 20px;
     font-family: 'Roboto', Helvetica, sans-serif;
     font-size: 16px;
     content: 'HTW Chur | Hochschule für Technik und Wirtschaft';
-    max-height: 10px;
+    // max-height: 10px;
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
-.page-header-headings {
-  margin-left: 20px;
+  .m-t-2.m-b-1 {
+    .row {
+      display: none;
+    }
+  }
+.card-body, .userprofile .profile_tree section {
+  padding: 0;
 }
   #page-header,
+  .card,
   header {
     page-break-after: avoid!important;
   }
   .tick text {
     font-size: 12px!important;
   }
-  .chart-area {
+  .chart-area, .analysis {
+    margin-top:0.5in;
+    margin-bottom: 0.5in;
     page-break-inside: avoid!important;
     page-break-before: avoid!important;
     -ms-overflow-style: -ms-autohiding-scrollbar;
   }
-  #feedback_analysis {
-    max-height: 30%;
-  }
+  // #feedback_analysis {
+  //   max-height: 130%;
+  // }
   .chart-area {
-    position: relative!important;
+    // position: relative!important;
     page-break-inside: avoid!important;
 
     canvas {
-      position: relative;
+      // position: relative;
       page-break-inside: avoid!important;
       -ms-overflow-style: -ms-autohiding-scrollbar;
     }
   }
+
+#page-header {
+  // max-width: 7in;
+  // -ms-overflow-style: -ms-autohiding-scrollbar;
+}
 
   #page-enrol-users #filterform,
   .card,
@@ -53,6 +66,7 @@
   .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax .yui-layout-unit-bottom,
   .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax .yui-layout-unit-right {
     background: none;
+    border: none;
   }
 
   #block-region-side-pre,
@@ -74,21 +88,23 @@
   }
 
   #region-main {
-    max-width: 7in;
+    // max-width: 7in;
     -ms-overflow-style: -ms-autohiding-scrollbar;
   }
-
+  // #feedback_analysis svg {
+  //     height: 130%;
+  // }
   .analysis,
   .chart-area,
   .chart-image {
-    position: relative;
+    // position: relative;
     page-break-inside: avoid!important;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 
     canvas {
-      max-width: 5in!important;
-      max-height: 3.3in!important;
-      position: relative;
+      // max-width: 5in!important;
+      // max-height: 3.3in!important;
+      // position: relative;
       page-break-inside: avoid!important;
       -ms-overflow-style: -ms-autohiding-scrollbar;
     }

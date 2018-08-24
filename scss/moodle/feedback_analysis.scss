@@ -1,0 +1,82 @@
+
+.chart-area {
+  max-width: 50%;
+  position: inherit;
+}
+
+.fbbuttons {
+  margin-bottom: 25px;
+
+  .btn {
+    margin-right: 10px;
+  }
+}
+
+
+.fbbuttons .btn-outline-warning,
+.fbbuttons .btn-warning {
+  margin-left: 25px;
+}
+
+#feedback_analysis {
+  box-sizing: content-box;
+  min-height: 40vh;
+
+  svg {
+    height: 100%;
+    // padding:10px;
+    // padding-left: 4vw;
+  }
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 120px;
+  // height: 28px;
+  padding: 4px;
+  color: $wedgewood;
+  box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+  font: 12px sans-serif;
+  background: #fff;
+  border: 0;
+  border-radius: 2px;
+  pointer-events: none;
+}
+.bar {
+  fill: $wedgewood;
+}
+
+.bar:hover,
+.fb-circle:hover {
+  fill: #C76D6D;
+}
+
+.axis {
+  color: #333;
+}
+
+.tick {
+  color: #bbb;
+}
+
+.axis line,
+.axis path {
+  fill: none;
+  stroke: #bbb;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  fill: #333;
+  margin: 2px;
+}
+
+.printbtn {
+  margin-left: 0.5rem;
+
+}
+
+.fbbutton {
+  margin-left: 0.5rem;
+}
