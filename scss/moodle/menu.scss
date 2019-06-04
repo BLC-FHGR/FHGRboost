@@ -6,3 +6,14 @@
 //     padding: 10px;
 //
 // }
+.context-header-settings-menu {
+    position: fixed;
+    top: 47px;
+    right: 0;
+    padding-left: 5px;
+    padding-right: 15px;
+    max-width: 4.5em;
+    z-index: 1;
+    background: rgba(255,255,255,.8);
+    box-shadow: 0 2px 4px rgba(0,0,0,.08);
+}
