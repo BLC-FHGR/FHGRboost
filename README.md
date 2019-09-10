@@ -4,7 +4,7 @@
 
 This theme is licensed under GPL3.
 
-The Logo of the HTW Chur is property of the HTW Chur and may be used with limited
+The Logo of the FHGR is property of the Fachhochschule Graubünden and may be used with limited
 permission.
 
 ## Installation
